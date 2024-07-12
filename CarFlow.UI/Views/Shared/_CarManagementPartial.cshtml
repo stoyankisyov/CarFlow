@@ -1,0 +1,118 @@
+﻿@model CarManagementViewModel
+
+<label for="Make_Id">Make:</label>
+<select id="Make_Id" asp-for="Car.Make.Id" name="Make.Id" class="form-control" onchange="populateSelectedCarMakeRelatedModels()">
+    @if (Model.Car is null)
+    {
+        <option value="">Select Make</option>
+    }
+
+    @foreach (var make in Model.Options.BaseOptions.Makes)
+    {
+        <option value="@make.Id">@make.Name</option>
+    }
+</select>
+
+<label for="Model_Id">Model:</label>
+<select id="Model_Id" asp-for="Car.Model.Id" name="Model.Id" class="form-control">
+    @if (Model.Car is null)
+    {
+        <option value="">Select Model</option>
+    }
+    else
+    {
+        var selected = Model.Options.BaseOptions.Models.SingleOrDefault(x => x.Id == Model.Car.Model.Id);
+
+        if (selected is not null)
+        {
+            <option value="@selected.Id">@selected.Name - @selected.ModelVariant</option>
+        }
+
+        foreach (var carModel in Model.Options.BaseOptions.Models.Where(x => x.MakeId == Model.Car.Make.Id && (@selected is null || x.Id != @selected.Id)))
+        {
+            <option value="@carModel.Id">@carModel.Name - @carModel.ModelVariant</option>
+        }
+    }
+
+
+</select>
+
+<div class="mt-3">
+    <label for="Generation">Generation</label>
+    <input type="text" asp-for="Car.Generation" name="Generation" />
+</div>
+
+
+@* TO DO: story 87 *@
+<label for="Body_Id">Body:</label>
+<select id="Body_Id" asp-for="Car.Body.Id" name="Body.Id" class="form-control">
+    <option value="">Select Body</option>
+    <option value="1">Sedan</option>
+</select>
+
+<label for="BodyVariant_Id">Body Variant:</label>
+<select id="BodyVariant_Id" asp-for="Car.BodyVariant.Id" name="BodyVariant.Id" class="form-control">
+    <option value="">Select Body Variant</option>
+    <option value="1">DoorCout: 2 SeatCount: 3</option>
+</select>
+
+<label for="Transmission_Id">Transmission</label>
+<select id="Transmission_Id" asp-for="Car.Transmission.Id" name="Transmission.Id" class="form-control" onchange="populateTransmissionVariants()">
+    @if (Model.Car is null)
+    {
+        <option value="">Select Transmission Type</option>
+    }
+
+    @foreach (var transmission in Model.Options.BaseOptions.Transmissions)
+    {
+        <option value="@transmission.Id">@transmission.Name</option>
+    }
+</select>
+
+<label for="TransmissionVariant_Id">Transmission Variant</label>
+<select id="TransmissionVariant_Id" asp-for="Car.TransmissionVariant.Id" name="TransmissionVariant.Id" class="form-control">
+    @if (Model.Car is null)
+    {
+        <option value="">Select Transmission Variant</option>
+    }
+    else
+    {
+        var selected = Model.Options.BaseOptions.TransmissionVariants.SingleOrDefault(x => x.Id == Model.Car.TransmissionVariant.Id);
+        if (selected is not null)
+        {
+            <option value="@selected.Id">@selected.GearCount</option>
+        }
+
+        foreach (var transmissionVariant in Model.Options.BaseOptions.TransmissionVariants.Where(x => x.TransmissionId == Model.Car.Transmission.Id && (@selected is null || x.Id != @selected.Id)))
+        {
+            <option value="@transmissionVariant.Id">@transmissionVariant.GearCount</option>
+        }
+    }
+</select>
+
+<label for="Drivetrain_Id">Drivetrain</label>
+<select id="Drivetrain_Id" asp-for="Car.Drivetrain.Id" name="Drivetrain.Id" class="form-control">
+    @if (Model.Car is null)
+    {
+        <option value="">Select Drivetrain</option>
+    }
+    @foreach (var drivetrain in Model.Options.BaseOptions.Drivetrains)
+    {
+        <option value="@drivetrain.Id">@drivetrain.Name</option>
+    }
+</select>
+
+<div class="mt-3">
+    <label for="StartYear">Start of production year</label>
+    <input id="StartYear" asp-for="Car.StartYear" name="StartYear" type="date" />
+</div>
+
+<div class="mt-3">
+    <label for="EndYear">End of production year</label>
+    <input id="EndYear" asp-for="Car.EndYear" name="EndYear" type="date" />
+</div>
+
+<script>
+    var modelsData = @Html.Raw(Json.Serialize(Model.Options.BaseOptions.Models));
+    var transmissionVariantsData = @Html.Raw(Json.Serialize(Model.Options.BaseOptions.TransmissionVariants));
+</script>

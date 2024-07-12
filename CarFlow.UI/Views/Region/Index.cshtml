@@ -1,0 +1,47 @@
+﻿@model PageViewModel<RegionViewModel>
+
+<div class="container">
+    <div class="row pt-4 pb-1">
+        <div class="col-6">
+            <h2>
+                Regions
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Create" asp-controller="Region" class="createButton">Create</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th colspan="2" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Content != null)
+            {
+                foreach (var region in Model.Content)
+                {
+                    <tr>
+                        <td>
+                            <a class="table-text" id="tableLinkText" asp-action="Details" asp-controller="Region" asp-route-id="@region.Id">@region.Name</a>
+                        </td>
+                        <td>
+                            <div class="actionColumn">
+                                <a asp-action="Update" asp-controller="Region" asp-route-id="@region.Id" class="tableButton editButton">Edit</a>
+                            </div>
+                        </td>
+                        <td class="actionColumn">
+                            <button type="button" class="tableButton deleteButton" onclick="deleteRegion(@region.Id)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<partial name="~/Views/Shared/_Pagination.cshtml" model="Model" />
+<script src="~/js/RegionRelated/DeleteRegion.js"></script>

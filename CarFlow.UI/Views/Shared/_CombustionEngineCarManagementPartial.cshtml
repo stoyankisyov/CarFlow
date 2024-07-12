@@ -1,0 +1,44 @@
+﻿@model CarManagementViewModel
+
+@{
+    var combustionEngineCar = (CombustionEngineCarViewViewModel)Model.Car;
+}
+
+<label for="Engine_Id">Engine:</label>
+<select id="Engine_Id" asp-for="@combustionEngineCar.Engine.Id" name="Engine.Id" class="form-control">
+    @if (Model.Car is null)
+    {
+        <option value="">Select Engine</option>
+    }
+    @foreach (var engine in Model.Options.CombustionEngineCarOptions.Engines)
+    {
+        <option value="@engine.Id">@engine.Model</option>
+    }
+</select>
+
+@* TO DO: story 86 *@
+<label for="EuroStandard_Id">Euro Standard:</label>
+<select id="EuroStandard_Id" asp-for="@combustionEngineCar.Eurostandard.Id" name="EuroStandard.Id" class="form-control">
+    @if (Model.Car is null)
+    {
+        <option value="">Select Euro Standard</option>
+    }
+
+    <option value="1"> Euro 6 </option>
+
+</select>
+
+<div class="mt-3">
+    <label for="CityFuel">City Fuel Consumption</label>
+    <input id="CityFuel" asp-for="@combustionEngineCar.CityFuel" name="CityFuel" />
+</div>
+
+<div class="mt-3">
+    <label for="CombinedFuel">Combined Fuel Consumption</label>
+    <input id="CombinedFuel" asp-for="@combustionEngineCar.CombinedFuel" name="CombinedFuel" />
+</div>
+
+<div class="mt-3">
+    <label for="HighwayFuel">Highway Fuel Consumption</label>
+    <input id="HighwayFuel" asp-for="@combustionEngineCar.HighwayFuel" name="HighwayFuel" />
+</div>

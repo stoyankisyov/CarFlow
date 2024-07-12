@@ -1,0 +1,46 @@
+﻿@model PageViewModel<TransmissionViewModel>
+
+<div class="container">
+    <div class="row pt-4 pb-1">
+        <div class="col-6">
+            <h2>Transmissions</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Create" asp-controller="Transmission" class="actionButton createButton">Create</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th colspan="2" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Content != null)
+            {
+                foreach (var transmission in Model.Content)
+                {
+                    <tr>
+                        <td>
+                            <a class="table-text" id="tableLinkText" asp-action="Details" asp-controller="Transmission" asp-route-id="@transmission.Id">@transmission.Name</a>
+                        </td>
+                        <td>
+                            <div class="actionColumn">
+                                <a asp-action="Update" asp-controller="Transmission" asp-route-id="@transmission.Id" class="tableButton editButton">Edit</a>
+                            </div>
+                        </td>
+                        <td class="actionColumn">
+                            <button type="button" class="tableButton deleteButton" onclick="deleteTransmissionType(@transmission.Id)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<partial name="~/Views/Shared/_Pagination.cshtml" model="Model" />
+<script src="~/js/TransmissionRelated/DeleteTransmission.js"></script>

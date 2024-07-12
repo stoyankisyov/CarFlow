@@ -1,0 +1,118 @@
+﻿.createButton {
+    background-color: #0d6efd;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.7em;
+    border: none;
+    border-radius: 5px;
+}
+
+.createButton:hover {
+    background-color: #0069d9;
+    transition: background-color 0.3s ease-in-out;
+    color:white;
+}
+
+#tableLinkText {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tableButton {
+    color:white;
+    width: 200px;
+    text-align: center;
+    padding: 7px 20px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.editButton {
+    background-color: #0d6efd;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.editButton:hover {
+    color:white;
+    background-color: #0069d9;
+}
+
+.deleteButton {
+    background-color: #dc3545;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.deleteButton:hover {
+    background-color: #c82333;
+}
+
+.actionColumn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-width:250px;
+}
+
+#add-subregion, #add-transmissionVariant, #add-model {
+    width: 200px;
+    background-color: limegreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 15px;
+    margin-top: 20px;
+}
+
+.addSubregionButtonContainer, .addTransmissionVariantButtonContainer, .addModelButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actionButtonsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.actionButton {
+    width: 200px;
+    color: white;
+    padding: 7px 15px;
+    margin:10px;
+    border:none;
+    border-radius:5px;
+    text-align:center;
+    text-decoration:none;
+}
+
+.addButton, .backButton, .updateButton {
+    background-color: #0d6efd;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.addButton:hover, .backButton:hover, .updateButton:hover {
+    color: white;
+    background-color: #0069d9;
+}
+
+.deleteSubregionButton, .deleteTransmissionVariantButton, .deleteModelButton {
+    border: none;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: white;
+    margin-top: 5px;
+    padding: 7px 15px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.deleteSubregionButton:hover, .deleteTransmissionVariantButton:hover {
+    background-color: #c82333;
+}

@@ -1,0 +1,30 @@
+﻿@using CarFlow.UI.Enums
+@model CarManagementViewModel
+
+<form method="post">
+    <input type="hidden" name="CarType" value="@Model.Car.CarType" />
+    <input type="hidden" asp-for="Car.Id" name="Id" value="@Model.Car.Id" />
+
+    <div id="baseCarPartial" class="car-type-partial">
+        <partial name="_CarManagementPartial" model="Model" />
+    </div>
+
+    @switch (Model.Car.CarType)
+    {
+        case CarType.CombustionEngineCar:
+            <div id="combustionEngineCarPartial" class="car-type-partial">
+                <partial name="_CombustionEngineCarManagementPartial" model="Model" />
+            </div>
+            break;
+        case CarType.ElectricCar:
+            <div id="electricCarPartial" class="car-type-partial">
+                <partial name="_ElectricCarManagementPartial" model="Model" />
+            </div>
+            break;
+    }
+
+    <button type="submit">Submit</button>
+</form>
+
+<script src="~/js/CarRelated/PopulateSelectedCarMakeRelatedModels.js"></script>
+<script src="~/js/CarRelated/PopulateTransmissionVariants.js"></script>

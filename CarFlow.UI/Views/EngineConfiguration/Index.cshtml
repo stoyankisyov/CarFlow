@@ -1,0 +1,51 @@
+﻿@model PageViewModel<EngineConfigurationViewModel>
+
+<div class="container">
+    <div class="row pt-4 pb-1">
+        <div class="col-6">
+            <h2>
+                Engine Configurations
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Create" asp-controller="EngineConfiguration" class="createButton">Create</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Cylinder Count</th>
+                <th colspan="2" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Content != null)
+            {
+                foreach (var engineConfiguration in Model.Content)
+                {
+                    <tr>
+                        <td>
+                            <h5 class="text-black text-center mt-3">@engineConfiguration.Name</h5>
+                        </td>
+                        <td>
+                            <h5 class="text-black text-center mt-3">@engineConfiguration.CylinderCount</h5>
+                        </td>
+                        <td>
+                            <div class="actionColumn">
+                                <a asp-action="Update" asp-controller="EngineConfiguration" asp-route-id="@engineConfiguration.Id" class="tableButton editButton">Edit</a>
+                            </div>
+                        </td>
+                        <td class="actionColumn">
+                            <button type="button" class="tableButton deleteButton" onclick="deleteEngineConfiguration(@engineConfiguration.Id)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<partial name="~/Views/Shared/_Pagination.cshtml" model="Model" />
+<script src="~/js/EngineConfigurationRelated/DeleteEngineConfiguration.js"></script>
