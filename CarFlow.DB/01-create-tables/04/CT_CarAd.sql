@@ -1,0 +1,31 @@
+CREATE TABLE CarAd
+(
+	Id INT IDENTITY(1,1) PRIMARY KEY,
+	AccountId INT NOT NULL,
+	ConditionId INT NOT NULL,
+	CarId INT NOT NULL,
+	ExteriorColorId INT NOT NULL,
+	InteriorColorId INT NOT NULL,
+	SeatsMaterialId INT NOT NULL,
+	SubregionId INT NOT NULL,
+	CreationDate DATETIME NOT NULL,
+	ExpirationDate DATETIME NOT NULL,
+	AdViews INT NOT NULL DEFAULT 0,
+	Title NVARCHAR(150) NOT NULL,
+	Description NVARCHAR(3000) DEFAULT NULL,
+	Mileage INT NOT NULL,
+	Price INT NOT NULL,
+	ManufactureYear DATE NOT NULL,
+	RegistrationYear DATE DEFAULT NULL,
+	Warranty DATE,
+	Vin NVARCHAR(150) DEFAULT NULL,
+	OwnerCount INT DEFAULT NULL,
+	VideoUrl NVARCHAR(500) DEFAULT NULL
+	FOREIGN KEY (AccountId) REFERENCES Account(Id),
+	FOREIGN KEY (ConditionId) REFERENCES Condition(Id),
+	FOREIGN KEY (CarId) REFERENCES Car(Id),
+	FOREIGN KEY (ExteriorColorId) REFERENCES Color(Id),
+	FOREIGN KEY (InteriorColorId) REFERENCES Color(Id),
+	FOREIGN KEY (SeatsMaterialId) REFERENCES SeatsMaterial(Id),
+	FOREIGN KEY (SubregionId) REFERENCES Subregion(Id)
+)

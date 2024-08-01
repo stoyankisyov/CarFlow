@@ -1,0 +1,9 @@
+CREATE TABLE Model
+(
+	Id INT IDENTITY(1,1) PRIMARY KEY,
+	MakeId INT NOT NULL,
+	Name NVARCHAR(150) NOT NULL,
+	ModelVariant NVARCHAR(150)
+	FOREIGN KEY (MakeId) REFERENCES Make(Id)
+	UNIQUE (MakeId, Name, ModelVariant)
+)
