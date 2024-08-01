@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class BodyVariant
+public class BodyVariant
 {
     public int Id { get; set; }
 

@@ -1,9 +1,8 @@
 ﻿using CarFlow.UI.Models.ViewModels;
 
-namespace CarFlow.UI.Interfaces
+namespace CarFlow.UI.Interfaces;
+
+public interface IEngineOptionsManager
 {
-    public interface IEngineOptionsManager
-    {
-        Task<EngineManagementOptionsViewModel> GetEngineOptionsAsync();
-    }
+    Task<EngineManagementOptionsViewModel> GetEngineOptionsAsync();
 }

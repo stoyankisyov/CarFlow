@@ -2,13 +2,11 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace CarFlow.UI.Models.ViewModels
-{
-    public class SignInViewModel
-    {
-        public string Email { get; init; }
+namespace CarFlow.UI.Models.ViewModels;
 
-        [DataType(DataType.Password)]
-        public string Password { get; init; }
-    }
+public class SignInViewModel
+{
+    public string Email { get; init; }
+
+    [DataType(DataType.Password)] public string Password { get; init; }
 }

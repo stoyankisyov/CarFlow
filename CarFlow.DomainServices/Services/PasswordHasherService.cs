@@ -1,11 +1,11 @@
-﻿using CarFlow.DomainServices.IService;
+﻿using CarFlow.DomainServices.Interfaces;
 
-namespace CarFlow.DomainServices.Services
+namespace CarFlow.DomainServices.Services;
+
+public class PasswordHasherService : IPasswordHasherService
 {
-    public class PasswordHasherService : IPasswordHasherService
-    {
-        public string HashPassword(string password) => BCrypt.Net.BCrypt.HashPassword(password);
+    public string HashPassword(string password) => BCrypt.Net.BCrypt.HashPassword(password);
 
-        public bool VerifyHashedPassword(string providedPassword, string hashedPassword) => BCrypt.Net.BCrypt.Verify(providedPassword, hashedPassword);
-    }
+    public bool VerifyHashedPassword(string providedPassword, string hashedPassword)
+        => BCrypt.Net.BCrypt.Verify(providedPassword, hashedPassword);
 }

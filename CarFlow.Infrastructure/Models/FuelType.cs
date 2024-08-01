@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class FuelType
+public class FuelType
 {
     public int Id { get; set; }
 

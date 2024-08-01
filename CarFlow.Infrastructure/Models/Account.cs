@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class Account
+public class Account
 {
     public int Id { get; set; }
 

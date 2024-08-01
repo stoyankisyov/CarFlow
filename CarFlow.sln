@@ -12,9 +12,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFlow.UI", "CarFlow.UI\Ca
 		{0B641DF6-5B78-4809-B418-E8315539BECD} = {0B641DF6-5B78-4809-B418-E8315539BECD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFlow.DomainServices", "CarFlow.DomainServices\CarFlow.DomainServices.csproj", "{0B641DF6-5B78-4809-B418-E8315539BECD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFlow.DomainServices", "CarFlow.DomainServices\CarFlow.DomainServices.csproj", "{0B641DF6-5B78-4809-B418-E8315539BECD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B9C54F4B-7279-4DE0-8329-48C108A49ED8} = {B9C54F4B-7279-4DE0-8329-48C108A49ED8}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFlow.WebAPI", "CarFlow.WebAPI\CarFlow.WebAPI.csproj", "{20300F5D-1978-45FF-9676-C2588F703FFA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0B641DF6-5B78-4809-B418-E8315539BECD} = {0B641DF6-5B78-4809-B418-E8315539BECD}
+		{B9C54F4B-7279-4DE0-8329-48C108A49ED8} = {B9C54F4B-7279-4DE0-8329-48C108A49ED8}
+		{DA895E20-5C80-452A-A0C8-35AB52BA1F26} = {DA895E20-5C80-452A-A0C8-35AB52BA1F26}
 	EndProjectSection
 EndProject
 Global
@@ -39,6 +46,10 @@ Global
 		{0B641DF6-5B78-4809-B418-E8315539BECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B641DF6-5B78-4809-B418-E8315539BECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B641DF6-5B78-4809-B418-E8315539BECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20300F5D-1978-45FF-9676-C2588F703FFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20300F5D-1978-45FF-9676-C2588F703FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20300F5D-1978-45FF-9676-C2588F703FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20300F5D-1978-45FF-9676-C2588F703FFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

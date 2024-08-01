@@ -1,34 +1,37 @@
-﻿namespace CarFlow.Infrastructure.Mappers
+﻿namespace CarFlow.Infrastructure.Mappers;
+
+public static class MakeMapper
 {
-    public static class MakeMapper
-    {
-        /// <summary>
-        /// Converts Models.Make/Entity/ to Core.Models.Make/DM/
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns> Core.Models.Make </returns>
-        public static Core.Models.Make ToDomainModel(this Models.Make entity)
-            => new(entity.Id, entity.Name, entity.Models.ToDomainModel());
+    /// <summary>
+    ///     Converts an entity model of type <see cref="Models.Make" /> to a domain model of type
+    ///     <see cref="Core.Models.Make" />.
+    /// </summary>
+    /// <param name="entity">The entity model instance to be converted.</param>
+    /// <returns>A new instance of <see cref="Core.Models.Make" /> representing the domain model.</returns>
+    public static Core.Models.Make ToDomainModel(this Models.Make entity)
+        => new(entity.Id, entity.Name, entity.Models.ToDomainModel());
 
-        /// <summary>
-        /// Converts ICollection of Models.Make/Entity/ to List of Core.Models.Make/DM/
-        /// </summary>
-        /// <param name="entities"></param>
-        /// <returns> List of Core.Models.Make </returns>
-        public static List<Core.Models.Make> ToDomainModel(this ICollection<Models.Make> entities)
-            => entities.Select(x => x.ToDomainModel()).ToList();
+    /// <summary>
+    ///     Converts an enumerable collection of entity models of type <see cref="Models.Make" /> to a list of domain models of
+    ///     type
+    ///     <see cref="Core.Models.Make" />.
+    /// </summary>
+    /// <param name="entities">The collection of entity models to be converted.</param>
+    /// <returns>A new list of <see cref="Core.Models.Make" /> representing the domain models.</returns>
+    public static List<Core.Models.Make> ToDomainModel(this IEnumerable<Models.Make> entities)
+        => entities.Select(x => x.ToDomainModel()).ToList();
 
-        /// <summary>
-        /// Converts Core.Models.Make/DM/ to Models.Make/Entity/
-        /// </summary>
-        /// <param name="domainModel"></param>
-        /// <returns> Models.Make </returns>
-        public static Models.Make ToEntity(this Core.Models.Make domainModel)
-            => new()
-            {
-                Id = domainModel.Id,
-                Name = domainModel.Name,
-                Models = domainModel.Models.ToEntity()
-            };
-    }
+    /// <summary>
+    ///     Converts a domain model of type <see cref="Core.Models.Make" /> to an entity model of type
+    ///     <see cref="Models.Make" />.
+    /// </summary>
+    /// <param name="domainModel">The domain model instance to be converted.</param>
+    /// <returns>A new instance of <see cref="Models.Make" /> representing the entity model.</returns>
+    public static Models.Make ToEntity(this Core.Models.Make domainModel)
+        => new()
+        {
+            Id = domainModel.Id,
+            Name = domainModel.Name,
+            Models = domainModel.Models.ToEntity()
+        };
 }

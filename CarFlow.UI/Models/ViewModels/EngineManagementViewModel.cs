@@ -1,9 +1,8 @@
 ﻿#nullable disable
 
-namespace CarFlow.UI.Models.ViewModels
+namespace CarFlow.UI.Models.ViewModels;
+
+public class EngineManagementViewModel : EngineViewModel
 {
-    public class EngineManagementViewModel : EngineViewModel
-    {
-        public EngineManagementOptionsViewModel Options { get; set; }   
-    }
+    public EngineManagementOptionsViewModel Options { get; set; }
 }

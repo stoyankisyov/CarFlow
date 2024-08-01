@@ -1,8 +1,7 @@
-﻿namespace CarFlow.UI.Enums
+﻿namespace CarFlow.UI.Enums;
+
+public enum CarType
 {
-    public enum CarType
-    {
-        CombustionEngineCar,
-        ElectricCar
-    }
+    CombustionEngineCar,
+    ElectricCar
 }

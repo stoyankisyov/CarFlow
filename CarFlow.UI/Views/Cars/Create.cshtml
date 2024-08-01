@@ -1,0 +1,30 @@
+﻿@model CarManagementViewModel
+
+<form method="post">
+    <div>
+        <label for="carType">Select Car Type:</label>
+        <select id="carType" asp-for="Car.CarType" name="CarType">
+            <option value="">---</option>
+            <option value="CombustionEngineCar">Combustion Engine Car</option>
+            <option value="ElectricCar">Electric Car</option>
+        </select>
+    </div>
+
+    <div id="baseCarPartial" class="car-type-partial" style="display: none;">
+        <partial name="_CarManagementPartial" model="Model"/>
+    </div>
+
+    <div id="combustionEngineCarPartial" class="car-type-partial" style="display: none;">
+        <partial name="_CombustionEngineCarManagementPartial"/>
+    </div>
+
+    <div id="electricCarPartial" class="car-type-partial" style="display: none;">
+        <partial name="_ElectricCarManagementPartial"/>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script src="~/js/CarRelated/LoadSelectedCarTypePartials.js"></script>
+<script src="~/js/CarRelated/PopulateSelectedCarMakeRelatedModels.js"></script>
+<script src="~/js/CarRelated/PopulateTransmissionVariants.js"></script>

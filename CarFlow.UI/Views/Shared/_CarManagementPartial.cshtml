@@ -28,7 +28,7 @@
             <option value="@selected.Id">@selected.Name - @selected.ModelVariant</option>
         }
 
-        foreach (var carModel in Model.Options.BaseOptions.Models.Where(x => x.MakeId == Model.Car.Make.Id && (@selected is null || x.Id != @selected.Id)))
+        foreach (var carModel in Model.Options.BaseOptions.Models.Where(x => x.MakeId == Model.Car.Make.Id && (selected is null || x.Id != selected.Id)))
         {
             <option value="@carModel.Id">@carModel.Name - @carModel.ModelVariant</option>
         }
@@ -39,7 +39,7 @@
 
 <div class="mt-3">
     <label for="Generation">Generation</label>
-    <input type="text" asp-for="Car.Generation" name="Generation" />
+    <input type="text" asp-for="Car.Generation" name="Generation"/>
 </div>
 
 
@@ -53,7 +53,7 @@
 <label for="BodyVariant_Id">Body Variant:</label>
 <select id="BodyVariant_Id" asp-for="Car.BodyVariant.Id" name="BodyVariant.Id" class="form-control">
     <option value="">Select Body Variant</option>
-    <option value="1">DoorCout: 2 SeatCount: 3</option>
+    <option value="1">DoorCount: 2 SeatCount: 3</option>
 </select>
 
 <label for="Transmission_Id">Transmission</label>
@@ -83,7 +83,7 @@
             <option value="@selected.Id">@selected.GearCount</option>
         }
 
-        foreach (var transmissionVariant in Model.Options.BaseOptions.TransmissionVariants.Where(x => x.TransmissionId == Model.Car.Transmission.Id && (@selected is null || x.Id != @selected.Id)))
+        foreach (var transmissionVariant in Model.Options.BaseOptions.TransmissionVariants.Where(x => x.TransmissionId == Model.Car.Transmission.Id && (selected is null || x.Id != selected.Id)))
         {
             <option value="@transmissionVariant.Id">@transmissionVariant.GearCount</option>
         }
@@ -104,12 +104,12 @@
 
 <div class="mt-3">
     <label for="StartYear">Start of production year</label>
-    <input id="StartYear" asp-for="Car.StartYear" name="StartYear" type="date" />
+    <input id="StartYear" asp-for="Car.StartYear" name="StartYear" type="date"/>
 </div>
 
 <div class="mt-3">
     <label for="EndYear">End of production year</label>
-    <input id="EndYear" asp-for="Car.EndYear" name="EndYear" type="date" />
+    <input id="EndYear" asp-for="Car.EndYear" name="EndYear" type="date"/>
 </div>
 
 <script>

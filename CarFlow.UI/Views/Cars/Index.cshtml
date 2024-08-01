@@ -1,0 +1,64 @@
+﻿@model PageViewModel<CarViewModel>
+
+<div class="container">
+    <div class="row pt-4 pb-1">
+        <div class="col-6">
+            <h2>
+                Cars
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Create" asp-controller="Cars" class="createButton">Create Car</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="text-center">Name</th>
+            <th colspan="2" class="text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model.Content != null)
+        {
+            foreach (var car in Model.Content)
+            {
+                <tr>
+                    <td>
+                        <h5 class="text-black text-center mt-3">@car.Generation</h5>
+                    </td>
+                    <td>
+                        @if (car is CombustionEngineCarViewViewModel combustionEngineCarViewModel)
+                        {
+                            <h5 class="text-black text-center mt-3">@combustionEngineCarViewModel.Eurostandard.Name</h5>
+                            <h5 class="text-black text-center mt-3">@combustionEngineCarViewModel.Engine.Configuration.Name</h5>
+                            <h5 class="text-black text-center mt-3">@combustionEngineCarViewModel.Make.Name</h5>
+                            <h5 class="text-black text-center mt-3">@combustionEngineCarViewModel.Transmission.Name</h5>
+                        }
+                        @if (car is ElectricCarViewViewModel electricCar)
+                        {
+                            <h5 class="text-black text-center mt-3">@electricCar.Make.Name</h5>
+                            <h5 class="text-black text-center mt-3">@electricCar.Transmission.Name</h5>
+                        }
+                    </td>
+                    <td>
+                        <div class="actionColumn">
+                            <a asp-action="Update" asp-controller="Cars" asp-route-id="@car.Id" class="tableButton editButton">Edit</a>
+                        </div>
+                    </td>
+                    <td class="actionColumn">
+                        <button type="button" class="tableButton deleteButton" onclick="deleteCar(@car.Id)">Delete</button>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Cars" asp-route-id="@car.Id" class="tableButton editButton">Details</a>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+</div>
+
+<script src="~/js/CarRelated/DeleteCar.js"></script>
+<partial name="~/Views/Shared/_Pagination.cshtml" model="Model"/>

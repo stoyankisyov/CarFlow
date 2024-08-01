@@ -1,9 +1,8 @@
-﻿namespace CarFlow.Core.Models
+﻿namespace CarFlow.Core.Models;
+
+public class Body(int id, string name, List<BodyVariant> variants)
 {
-    public class Body(int id, string name, List<BodyVariant> variants)
-    {
-        public int Id { get; } = id;
-        public string Name { get; } = name;
-        public List<BodyVariant> Variants { get; } = variants;
-    }
+    public int Id { get; } = id;
+    public string Name { get; } = name;
+    public List<BodyVariant> Variants { get; } = variants;
 }

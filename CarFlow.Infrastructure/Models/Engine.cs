@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class Engine
+public class Engine
 {
     public int Id { get; set; }
 
@@ -20,7 +20,8 @@ public partial class Engine
 
     public virtual EngineAspiration Aspiration { get; set; } = null!;
 
-    public virtual ICollection<CombustionEngineCar> CombustionEngineCars { get; set; } = new List<CombustionEngineCar>();
+    public virtual ICollection<CombustionEngineCar> CombustionEngineCars { get; set; } =
+        new List<CombustionEngineCar>();
 
     public virtual EngineConfiguration Configuration { get; set; } = null!;
 

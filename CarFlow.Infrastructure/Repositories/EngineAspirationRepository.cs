@@ -1,64 +1,66 @@
-﻿using CarFlow.Core.IRepository;
-using CarFlow.Core.Models;
+﻿using CarFlow.Core.Models;
+using CarFlow.Core.Repositories;
 using CarFlow.Infrastructure.Mappers;
 using CarFlow.Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarFlow.Infrastructure.Repositories
+namespace CarFlow.Infrastructure.Repositories;
+
+public class EngineAspirationRepository(CarFlowContext context) : IEngineAspirationRepository
 {
-    public class EngineAspirationRepository(CarFlowContext context) : IEngineAspirationRepository
+    public async Task AddAsync(Core.Models.EngineAspiration engineAspiration)
     {
-        public async Task AddAsync(Core.Models.EngineAspiration engineAspiration)
-        {
-            await context.EngineAspirations.AddAsync(engineAspiration.ToEntity());
+        await context.EngineAspirations.AddAsync(engineAspiration.ToEntity());
 
-            await context.SaveChangesAsync();
-        }
+        await context.SaveChangesAsync();
+    }
 
-        public async Task DeleteAsync(int id)
-        {
-            var engineAspiration = await context.EngineAspirations.SingleAsync(x => x.Id == id);
-            context.EngineAspirations.Remove(engineAspiration);
+    public async Task DeleteAsync(int id)
+    {
+        var engineAspiration = await context.EngineAspirations.SingleAsync(x => x.Id == id);
 
-            await context.SaveChangesAsync();
-        }
+        context.EngineAspirations.Remove(engineAspiration);
 
-        public async Task<Core.Models.EngineAspiration> GetAsync(int id)
-        {
-            var engineAspiration = await context.EngineAspirations.SingleAsync(x => x.Id == id);
+        await context.SaveChangesAsync();
+    }
 
-            return engineAspiration.ToDomainModel();
-        }
+    public async Task<Core.Models.EngineAspiration?> GetAsync(int id)
+    {
+        var engineAspiration = await context.EngineAspirations.SingleOrDefaultAsync(x => x.Id == id);
 
-        public async Task<List<Core.Models.EngineAspiration>> GetAllAsync()
-        {
-            var engineAspirationList = await context.EngineAspirations.ToListAsync();
+        return engineAspiration?.ToDomainModel();
+    }
 
-            return engineAspirationList.ToDomainModel();
-        }
+    public async Task<List<Core.Models.EngineAspiration>> GetAllAsync()
+    {
+        var engineAspirationList = await context.EngineAspirations.ToListAsync();
 
-        public async Task<Page<Core.Models.EngineAspiration>> GetPageAsync(int currentPage, int pageSize)
-        {
-            var offset = (currentPage - 1) * pageSize;
+        return engineAspirationList.ToDomainModel();
+    }
 
-            var engineAspirationList = await context.EngineAspirations
-                .OrderBy(x => x.Id)
-                .Skip(offset)
-                .Take(pageSize)
-                .ToListAsync();
+    public async Task<Page<Core.Models.EngineAspiration>> GetPageAsync(int currentPage, int pageSize)
+    {
+        var offset = (currentPage - 1) * pageSize;
 
-            var recordCount = await context.EngineAspirations.CountAsync();
-            var pageCount = (int)Math.Ceiling((double)recordCount / pageSize);
+        var engineAspirationList = await context.EngineAspirations
+            .OrderBy(x => x.Id)
+            .Skip(offset)
+            .Take(pageSize)
+            .ToListAsync();
 
-            return new Page<Core.Models.EngineAspiration>(currentPage, pageCount, pageSize, engineAspirationList.ToDomainModel());
-        }
+        var recordCount = await context.EngineAspirations.CountAsync();
+        var pageCount = (int)Math.Ceiling((double)recordCount / pageSize);
 
-        public async Task UpdateAsync(Core.Models.EngineAspiration updateEngineAspiration)
-        {
-            var existingEngineAspiration = await context.EngineAspirations.SingleAsync(x => x.Id == updateEngineAspiration.Id);
-            existingEngineAspiration.Name = updateEngineAspiration.Name;
+        return new Page<Core.Models.EngineAspiration>(currentPage, pageCount, pageSize,
+            engineAspirationList.ToDomainModel());
+    }
 
-            await context.SaveChangesAsync();
-        }
+    public async Task UpdateAsync(Core.Models.EngineAspiration updateEngineAspiration)
+    {
+        var existingEngineAspiration =
+            await context.EngineAspirations.SingleAsync(x => x.Id == updateEngineAspiration.Id);
+        existingEngineAspiration.Name = updateEngineAspiration.Name;
+
+        await context.SaveChangesAsync();
     }
 }

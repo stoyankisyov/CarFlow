@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class PromotionType
+public class PromotionType
 {
     public int Id { get; set; }
 

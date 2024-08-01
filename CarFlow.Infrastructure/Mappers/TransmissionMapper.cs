@@ -1,34 +1,37 @@
-﻿namespace CarFlow.Infrastructure.Mappers
+﻿namespace CarFlow.Infrastructure.Mappers;
+
+public static class TransmissionMapper
 {
-    public static class TransmissionMapper
-    {
-        /// <summary>
-        /// Converts Models.Transmission/Entity/ to Core.Models.Transmission/DM/
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns> Core.Models.Transmission </returns>
-        public static Core.Models.Transmission ToDomainModel(this Models.Transmission entity)
-            => new(entity.Id, entity.Name, entity.TransmissionVariants.ToDomainModel());
+    /// <summary>
+    ///     Converts an entity model of type <see cref="Models.Transmission" /> to a domain model of type
+    ///     <see cref="Core.Models.Transmission" />.
+    /// </summary>
+    /// <param name="entity">The entity model instance to be converted.</param>
+    /// <returns>A new instance of <see cref="Core.Models.Transmission" /> representing the domain model.</returns>
+    public static Core.Models.Transmission ToDomainModel(this Models.Transmission entity)
+        => new(entity.Id, entity.Name, entity.TransmissionVariants.ToDomainModel());
 
-        /// <summary>
-        /// Converts ICollection of Models.Transmission/Entity/ to List of Core.Models.Transmission/DM/
-        /// </summary>
-        /// <param name="entities"></param>
-        /// <returns> List of Core.Models.Transmission </returns>
-        public static List<Core.Models.Transmission> ToDomainModel(this ICollection<Models.Transmission> entities)
-            => entities.Select(x => x.ToDomainModel()).ToList();
+    /// <summary>
+    ///     Converts an enumerable collection of entity models of type <see cref="Models.Transmission" /> to a list of domain
+    ///     models of
+    ///     type <see cref="Core.Models.Transmission" />.
+    /// </summary>
+    /// <param name="entities">The collection of entity models to be converted.</param>
+    /// <returns>A new list of <see cref="Core.Models.Transmission" /> representing the domain models.</returns>
+    public static List<Core.Models.Transmission> ToDomainModel(this IEnumerable<Models.Transmission> entities)
+        => entities.Select(x => x.ToDomainModel()).ToList();
 
-        /// <summary>
-        /// Converts Core.Models.Transmission/DM/ to Models.Transmission/Entity/
-        /// </summary>
-        /// <param name="domainModel"></param>
-        /// <returns> Models.Transmission </returns>
-        public static Models.Transmission ToEntity(this Core.Models.Transmission domainModel)
-            => new()
-            {
-                Id = domainModel.Id,
-                Name = domainModel.Name,
-                TransmissionVariants = domainModel.TransmissionVariants.ToEntity()
-            };
-    }
+    /// <summary>
+    ///     Converts a domain model of type <see cref="Core.Models.Transmission" /> to an entity model of type
+    ///     <see cref="Models.Transmission" />.
+    /// </summary>
+    /// <param name="domainModel">The domain model instance to be converted.</param>
+    /// <returns>A new instance of <see cref="Models.Transmission" /> representing the entity model.</returns>
+    public static Models.Transmission ToEntity(this Core.Models.Transmission domainModel)
+        => new()
+        {
+            Id = domainModel.Id,
+            Name = domainModel.Name,
+            TransmissionVariants = domainModel.TransmissionVariants.ToEntity()
+        };
 }

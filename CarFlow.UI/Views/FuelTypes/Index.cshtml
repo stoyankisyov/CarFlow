@@ -1,0 +1,47 @@
+﻿@model PageViewModel<FuelTypeViewModel>
+
+<div class="container">
+    <div class="row pt-4 pb-1">
+        <div class="col-6">
+            <h2>
+                Fuel Types
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Create" asp-controller="FuelTypes" class="createButton">Create</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="text-center">Name</th>
+            <th colspan="2" class="text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model.Content != null)
+        {
+            foreach (var fuelType in Model.Content)
+            {
+                <tr>
+                    <td>
+                        <h5 class="text-black text-center mt-3">@fuelType.Name</h5>
+                    </td>
+                    <td>
+                        <div class="actionColumn">
+                            <a asp-action="Update" asp-controller="FuelTypes" asp-route-id="@fuelType.Id" class="tableButton editButton">Edit</a>
+                        </div>
+                    </td>
+                    <td class="actionColumn">
+                        <button type="button" class="tableButton deleteButton" onclick="deleteFuelType(@fuelType.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+</div>
+
+<partial name="~/Views/Shared/_Pagination.cshtml" model="Model"/>
+<script src="~/js/FuelTypeRelated/DeleteFuelType.js"></script>

@@ -6,6 +6,7 @@ namespace CarFlow.Infrastructure.Models;
 public partial class CarFlowContext : DbContext
 {
     private readonly IConfiguration _configuration;
+
     public CarFlowContext(IConfiguration configuration)
     {
         _configuration = configuration;

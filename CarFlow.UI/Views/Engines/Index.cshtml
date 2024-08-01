@@ -1,0 +1,64 @@
+﻿@model PageViewModel<EngineViewModel>
+
+<div class="container">
+    <div class="row pt-4 pb-1">
+        <div class="col-6">
+            <h2>
+                Engines
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Create" asp-controller="Engines" class="createButton">Create</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="text-center">Model</th>
+            <th class="text-center">Fuel Type</th>
+            <th class="text-center">Configuration</th>
+            <th class="text-center">Aspiration</th>
+            <th colspan="3" class="text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model.Content != null)
+        {
+            foreach (var engine in Model.Content)
+            {
+                <tr>
+                    <td>
+                        <h5 class="text-black text-center mt-3">@engine.Model</h5>
+                    </td>
+                    <td>
+                        <h5 class="text-black text-center mt-3">@engine.FuelType.Name</h5>
+                    </td>
+                    <td>
+                        <h5 class="text-black text-center mt-3">@engine.Configuration.Name</h5>
+                    </td>
+                    <td>
+                        <h5 class="text-black text-center mt-3">@engine.Aspiration.Name</h5>
+                    </td>
+                    <td>
+                        <div class="actionColumn">
+                            <a asp-action="Details" asp-controller="Engines" asp-route-id="@engine.Id" class="tableButton editButton">Details</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="actionColumn">
+                            <a asp-action="Update" asp-controller="Engines" asp-route-id="@engine.Id" class="tableButton editButton">Edit</a>
+                        </div>
+                    </td>
+                    <td class="actionColumn">
+                        <button type="button" class="tableButton deleteButton" onclick="deleteEngine(@engine.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+</div>
+
+<partial name="~/Views/Shared/_Pagination.cshtml" model="Model"/>
+<script src="~/js/EngineRelated/DeleteEngine.js"></script>

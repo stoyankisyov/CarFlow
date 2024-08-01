@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class Drivetrain
+public class Drivetrain
 {
     public int Id { get; set; }
 

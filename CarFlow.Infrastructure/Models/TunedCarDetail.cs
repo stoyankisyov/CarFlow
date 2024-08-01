@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class TunedCarDetail
+public class TunedCarDetail
 {
     public int Id { get; set; }
 

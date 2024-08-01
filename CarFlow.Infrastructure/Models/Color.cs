@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class Color
+public class Color
 {
     public int Id { get; set; }
 

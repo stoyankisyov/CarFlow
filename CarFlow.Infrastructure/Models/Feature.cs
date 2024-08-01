@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class Feature
+public class Feature
 {
     public int Id { get; set; }
 

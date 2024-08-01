@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class TransmissionVariant
+public class TransmissionVariant
 {
     public int Id { get; set; }
 

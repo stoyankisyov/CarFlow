@@ -1,64 +1,64 @@
-﻿using CarFlow.Core.IRepository;
-using CarFlow.Core.Models;
+﻿using CarFlow.Core.Models;
+using CarFlow.Core.Repositories;
 using CarFlow.Infrastructure.Mappers;
 using CarFlow.Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarFlow.Infrastructure.Repositories
+namespace CarFlow.Infrastructure.Repositories;
+
+public class FuelTypeRepository(CarFlowContext context) : IFuelTypeRepository
 {
-    public class FuelTypeRepository(CarFlowContext context) : IFuelTypeRepository
+    public async Task AddAsync(Core.Models.FuelType fuelType)
     {
-        public async Task AddAsync(Core.Models.FuelType fuelType)
-        {
-            await context.FuelTypes.AddAsync(fuelType.ToEntity());
+        await context.FuelTypes.AddAsync(fuelType.ToEntity());
 
-            await context.SaveChangesAsync();
-        }
+        await context.SaveChangesAsync();
+    }
 
-        public async Task DeleteAsync(int id)
-        {
-            var fuelType = await context.FuelTypes.SingleAsync(x => x.Id == id);
-            context.FuelTypes.Remove(fuelType);
+    public async Task DeleteAsync(int id)
+    {
+        var fuelType = await context.FuelTypes.SingleAsync(x => x.Id == id);
 
-            await context.SaveChangesAsync();
-        }
+        context.FuelTypes.Remove(fuelType);
 
-        public async Task<Core.Models.FuelType> GetAsync(int id)
-        {
-            var fuelType = await context.FuelTypes.SingleAsync(x => x.Id == id);
+        await context.SaveChangesAsync();
+    }
 
-            return fuelType.ToDomainModel();
-        }
+    public async Task<Core.Models.FuelType?> GetAsync(int id)
+    {
+        var fuelType = await context.FuelTypes.SingleOrDefaultAsync(x => x.Id == id);
 
-        public async Task<List<Core.Models.FuelType>> GetAllAsync()
-        {
-            var fuelTypes = await context.FuelTypes.ToListAsync();
+        return fuelType?.ToDomainModel();
+    }
 
-            return fuelTypes.ToDomainModel();
-        }
+    public async Task<List<Core.Models.FuelType>> GetAllAsync()
+    {
+        var fuelTypes = await context.FuelTypes.ToListAsync();
 
-        public async Task<Page<Core.Models.FuelType>> GetPageAsync(int currentPage, int pageSize)
-        {
-            var offset = (currentPage - 1) * pageSize;
+        return fuelTypes.ToDomainModel();
+    }
 
-            var fuelTypeList = await context.FuelTypes
-                .OrderBy(x => x.Id)
-                .Skip(offset)
-                .Take(pageSize)
-                .ToListAsync();
+    public async Task<Page<Core.Models.FuelType>> GetPageAsync(int currentPage, int pageSize)
+    {
+        var offset = (currentPage - 1) * pageSize;
 
-            var recordCount = await context.FuelTypes.CountAsync();
-            var pageCount = (int)Math.Ceiling((double)recordCount / pageSize);
+        var fuelTypeList = await context.FuelTypes
+            .OrderBy(x => x.Id)
+            .Skip(offset)
+            .Take(pageSize)
+            .ToListAsync();
 
-            return new Page<Core.Models.FuelType>(currentPage, pageCount, pageSize, fuelTypeList.ToDomainModel());
-        }
+        var recordCount = await context.FuelTypes.CountAsync();
+        var pageCount = (int)Math.Ceiling((double)recordCount / pageSize);
 
-        public async Task UpdateAsync(Core.Models.FuelType updateFuelType)
-        {
-            var existingFuelType = await context.FuelTypes.SingleAsync(x => x.Id == updateFuelType.Id);
-            existingFuelType.Name = updateFuelType.Name;
+        return new Page<Core.Models.FuelType>(currentPage, pageCount, pageSize, fuelTypeList.ToDomainModel());
+    }
 
-            await context.SaveChangesAsync();
-        }
+    public async Task UpdateAsync(Core.Models.FuelType updateFuelType)
+    {
+        var existingFuelType = await context.FuelTypes.SingleAsync(x => x.Id == updateFuelType.Id);
+        existingFuelType.Name = updateFuelType.Name;
+
+        await context.SaveChangesAsync();
     }
 }

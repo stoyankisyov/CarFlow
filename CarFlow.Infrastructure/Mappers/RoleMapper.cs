@@ -1,41 +1,45 @@
-﻿namespace CarFlow.Infrastructure.Mappers
+﻿namespace CarFlow.Infrastructure.Mappers;
+
+public static class RoleMapper
 {
-    public static class RoleMapper
-    {
-        /// <summary>
-        /// Converts Models.Roles/Entity/ to Core.Models.Roles/DM/
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns> Core.Models.Roles </returns>
-        public static Core.Models.Role ToDomainModel(this Models.Role entity)
-            => new(entity.Id, entity.Name);
+    /// <summary>
+    ///     Converts an entity model of type <see cref="Models.Role" /> to a domain model of type
+    ///     <see cref="Core.Models.Role" />.
+    /// </summary>
+    /// <param name="entity">The entity model instance to be converted.</param>
+    /// <returns>A new instance of <see cref="Core.Models.Role" /> representing the domain model.</returns>
+    public static Core.Models.Role ToDomainModel(this Models.Role entity)
+        => new(entity.Id, entity.Name);
 
-        /// <summary>
-        /// Converts IEnumerable of Models.Role/Entities/ to List of Core.Models.Role/DM/
-        /// </summary>
-        /// <param name="entities"></param>
-        /// <returns> List of Core.Models.Role </returns>
-        public static List<Core.Models.Role> ToDomainModel(this IEnumerable<Models.Role> entities)
-            => entities.Select(x => x.ToDomainModel()).ToList();
+    /// <summary>
+    ///     Converts an enumerable collection of entity models of type <see cref="Models.Role" /> to a list of domain models of
+    ///     type <see cref="Core.Models.Role" />.
+    /// </summary>
+    /// <param name="entities">The enumerable collection of entity models to be converted.</param>
+    /// <returns>A new list of <see cref="Core.Models.Role" /> representing the domain models.</returns>
+    public static List<Core.Models.Role> ToDomainModel(this IEnumerable<Models.Role> entities)
+        => entities.Select(x => x.ToDomainModel()).ToList();
 
-        /// <summary>
-        /// Converts List of Core.Models.Role/DM/ to List of Models.Role/Entities/
-        /// </summary>
-        /// <param name="domainModels"></param>
-        /// <returns> List of Models.Role </returns>
-        public static List<Models.Role> ToEntities(this List<Core.Models.Role> domainModels)
-            => domainModels.Select(x => x.ToEntity()).ToList();
+    /// <summary>
+    ///     Converts an enumerable collection of domain models of type <see cref="Core.Models.Role" /> to a list of entity
+    ///     models of type
+    ///     <see cref="Models.Role" />.
+    /// </summary>
+    /// <param name="domainModels">The list of domain models to be converted.</param>
+    /// <returns>A new list of <see cref="Models.Role" /> representing the entity models.</returns>
+    public static List<Models.Role> ToEntity(this IEnumerable<Core.Models.Role> domainModels)
+        => domainModels.Select(x => x.ToEntity()).ToList();
 
-        /// <summary>
-        /// Converts Core.Models.Role/DM/ to Models.Role/Entity/
-        /// </summary>
-        /// <param name="domainModel"></param>
-        /// <returns> Models.Role </returns>
-        private static Models.Role ToEntity(this Core.Models.Role domainModel)
-            => new()
-            {
-                Id = domainModel.Id,
-                Name = domainModel.Name
-            };
-    }
+    /// <summary>
+    ///     Converts a domain model of type <see cref="Core.Models.Role" /> to an entity model of type
+    ///     <see cref="Models.Role" />.
+    /// </summary>
+    /// <param name="domainModel">The domain model instance to be converted.</param>
+    /// <returns>A new instance of <see cref="Models.Role" /> representing the entity model.</returns>
+    private static Models.Role ToEntity(this Core.Models.Role domainModel)
+        => new()
+        {
+            Id = domainModel.Id,
+            Name = domainModel.Name
+        };
 }

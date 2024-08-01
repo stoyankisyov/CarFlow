@@ -1,0 +1,74 @@
+﻿@model EngineManagementViewModel
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary text-center">Edit Engine</h2>
+        </div>
+        <div class="mb-3">
+            <label for="Model">Engine Model</label>
+            <input asp-for="Model" class="form-control"/>
+            <label for="Displacement">Displacement</label>
+            <input asp-for="Displacement" class="form-control"/>
+            <span asp-validation-for="Displacement" class="text-danger"></span>
+            <label for="Horsepower">Horsepower</label>
+            <input asp-for="Horsepower" class="form-control"/>
+            <label for="Torque">Torque</label>
+            <input asp-for="Torque" class="form-control"/>
+
+            <label for="FuelType.Id">FuelType</label>
+            <select asp-for="FuelType.Id" class="form-control">
+                <option value=""> </option>
+                @foreach (var fuelType in Model.Options.FuelTypes)
+                {
+                    if (fuelType.Id == Model.FuelType.Id)
+                    {
+                        <option value="@fuelType.Id">@fuelType.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@fuelType.Id" data-name="@fuelType.Name">@fuelType.Name</option>
+                    }
+                }
+            </select>
+
+
+            <label for="Configuration.Id">Configuration</label>
+            <select asp-for="Configuration.Id" class="form-control">
+                <option value=""> </option>
+                @foreach (var configuration in Model.Options.Configurations)
+                {
+                    if (configuration.Id == Model.FuelType.Id)
+                    {
+                        <option value="@configuration.Id"></option>
+                    }
+                    else
+                    {
+                        <option value="@configuration.Id">@configuration.Name</option>
+                    }
+                }
+            </select>
+
+            <label for="Aspiration.Id">Aspiration</label>
+            <select asp-for="Aspiration.Id" class="form-control">
+                <option value=""> </option>
+                @foreach (var aspiration in Model.Options.Aspirations)
+                {
+                    if (aspiration.Id == Model.FuelType.Id)
+                    {
+                        <option value="@aspiration.Id">@aspiration.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@aspiration.Id">@aspiration.Name</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="actionButtonsContainer">
+        <button type="submit" class="actionButton updateButton">Save</button>
+        <a asp-action="Index" asp-controller="Engines" class="actionButton backButton">Back</a>
+    </div>
+</form>

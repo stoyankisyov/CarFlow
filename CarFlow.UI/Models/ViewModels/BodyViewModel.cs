@@ -1,11 +1,10 @@
 ﻿#nullable disable
 
-namespace CarFlow.UI.Models.ViewModels
+namespace CarFlow.UI.Models.ViewModels;
+
+public class BodyViewModel
 {
-    public class BodyViewModel
-    {
-        public int Id { get; init; }
-        public string Name { get; init; }
-        public List<BodyVariantViewModel> Variants { get; init; }
-    }
+    public int Id { get; init; }
+    public string Name { get; init; }
+    public List<BodyVariantViewModel> Variants { get; init; }
 }

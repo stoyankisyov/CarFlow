@@ -1,0 +1,56 @@
+﻿@model EngineManagementViewModel
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary text-center">Create Engine</h2>
+        </div>
+        <div class="mb-3">
+            <label for="Model">Engine Model</label>
+            <input asp-for="Model" class="form-control"/>
+            <label for="Displacement">Displacement</label>
+            <input asp-for="Displacement" class="form-control"/>
+            <span asp-validation-for="Displacement" class="text-danger"></span>
+            <label for="Horsepower">Horsepower</label>
+            <input asp-for="Horsepower" class="form-control"/>
+            <label for="Torque">Torque</label>
+            <input asp-for="Torque" class="form-control"/>
+
+            <label for="FuelType.Id">Fuel Type</label>
+
+            <select asp-for="FuelType.Id" class="form-control">
+                <option value=""> </option>
+                @foreach (var fuelType in Model.Options.FuelTypes)
+                {
+                    <option value="@fuelType.Id">
+                        @fuelType.Name
+                    </option>
+                }
+            </select>
+
+            <label for="Configuration.Id">Engine Configuration</label>
+            <select asp-for="Configuration.Id" class="form-control">
+                <option value=""> </option>
+                @foreach (var configuration in Model.Options.Configurations)
+                {
+                    <option value="@configuration.Id">
+                        @configuration.Name
+                    </option>
+                }
+            </select>
+
+            <label for="Aspiration.Id">Aspiration</label>
+            <select asp-for="Aspiration.Id" class="form-control">
+                <option value=""> </option>
+                @foreach (var aspiration in Model.Options.Aspirations)
+                {
+                    <option value="@aspiration.Id">
+                        @aspiration.Name
+                    </option>
+                }
+            </select>
+
+            <button type="submit" class="actionButton" id="addButton">Create</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,18 @@
+﻿@model EngineViewModel
+
+<div class="border p-3 mt-4">
+    <div class="row align-content-center">
+        <h1 class="text-center">@Model.Model</h1>
+    </div>
+    <div class="align-content-center mb-3">
+        <h2>Displacement: @Model.Displacement</h2>
+        <h2>Horsepower: @Model.Horsepower</h2>
+        <h2>Torque: @Model.Torque</h2>
+        <h2>FuelType: @Model.FuelType.Name</h2>
+        <h2>Configuration: @Model.Configuration.Name</h2>
+        <h2>Cylinder Count: @Model.Configuration.CylinderCount</h2>
+        <h2>Aspiration: @Model.Aspiration.Name</h2>
+    </div>
+    <a asp-action="Index" asp-controller="Engines" class="actionButton backButton">Back</a>
+
+</div>

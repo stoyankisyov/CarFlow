@@ -1,10 +1,9 @@
 ﻿#nullable disable
 
-namespace CarFlow.UI.Models.ViewModels
+namespace CarFlow.UI.Models.ViewModels;
+
+public class EuroStandardViewModel
 {
-    public class EuroStandardViewModel
-    {
-        public int Id { get; init; }
-        public string Name { get; init; }
-    }
+    public int Id { get; init; }
+    public string Name { get; init; }
 }

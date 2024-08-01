@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class SeatsMaterial
+public class SeatsMaterial
 {
     public int Id { get; set; }
 

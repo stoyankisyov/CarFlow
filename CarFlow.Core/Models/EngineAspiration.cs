@@ -1,8 +1,7 @@
-﻿namespace CarFlow.Core.Models
+﻿namespace CarFlow.Core.Models;
+
+public class EngineAspiration(int id, string name)
 {
-    public class EngineAspiration(int id, string name)
-    {
-        public int Id { get; } = id;
-        public string Name { get; } = name;
-    }
+    public int Id { get; } = id;
+    public string Name { get; } = name;
 }

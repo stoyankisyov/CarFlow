@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class Make
+public class Make
 {
     public int Id { get; set; }
 

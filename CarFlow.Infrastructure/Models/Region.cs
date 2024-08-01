@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class Region
+public class Region
 {
     public int Id { get; set; }
 

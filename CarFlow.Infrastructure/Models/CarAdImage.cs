@@ -1,6 +1,6 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public partial class CarAdImage
+public class CarAdImage
 {
     public int Id { get; set; }
 

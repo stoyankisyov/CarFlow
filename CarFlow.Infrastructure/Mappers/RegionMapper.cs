@@ -1,34 +1,37 @@
-﻿namespace CarFlow.Infrastructure.Mappers
+﻿namespace CarFlow.Infrastructure.Mappers;
+
+public static class RegionMapper
 {
-    public static class RegionMapper
-    {
-        /// <summary>
-        /// Converts Models.Region/Entity/ to Core.Models.Region/DM/
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns> Core.Models.Region </returns>
-        public static Core.Models.Region ToDomainModel(this Models.Region entity)
-            => new(entity.Id, entity.Name, entity.Subregions.ToDomainModel());
+    /// <summary>
+    ///     Converts an entity model of type <see cref="Models.Region" /> to a domain model of type
+    ///     <see cref="Core.Models.Region" />.
+    /// </summary>
+    /// <param name="entity">The entity model instance to be converted.</param>
+    /// <returns>A new instance of <see cref="Core.Models.Region" /> representing the domain model.</returns>
+    public static Core.Models.Region ToDomainModel(this Models.Region entity)
+        => new(entity.Id, entity.Name, entity.Subregions.ToDomainModel());
 
-        /// <summary>
-        /// Converts ICollection of Models.Region/Entity/ to List of Core.Models.Region/DM/
-        /// </summary>
-        /// <param name="entities"></param>
-        /// <returns> List of Core.Models.Region </returns>
-        public static List<Core.Models.Region> ToDomainModel(this ICollection<Models.Region> entities)
-            => entities.Select(x => x.ToDomainModel()).ToList();
+    /// <summary>
+    ///     Converts an enumerable collection of entity models of type <see cref="Models.Region" /> to a list of domain models
+    ///     of type
+    ///     <see cref="Core.Models.Region" />.
+    /// </summary>
+    /// <param name="entities">The collection of entity models to be converted.</param>
+    /// <returns>A new list of <see cref="Core.Models.Region" /> representing the domain models.</returns>
+    public static List<Core.Models.Region> ToDomainModel(this IEnumerable<Models.Region> entities)
+        => entities.Select(x => x.ToDomainModel()).ToList();
 
-        /// <summary>
-        /// Converts Core.Models.Region/DM/ to Models.Region/Entity/
-        /// </summary>
-        /// <param name="domainModel"></param>
-        /// <returns> Models.Region </returns>
-        public static Models.Region ToEntity(this Core.Models.Region domainModel)
-            => new()
-            {
-                Id = domainModel.Id,
-                Name = domainModel.Name,
-                Subregions = domainModel.Subregions.ToEntity()
-            };
-    }
+    /// <summary>
+    ///     Converts a domain model of type <see cref="Core.Models.Region" /> to an entity model of type
+    ///     <see cref="Models.Region" />.
+    /// </summary>
+    /// <param name="domainModel">The domain model instance to be converted.</param>
+    /// <returns>A new instance of <see cref="Models.Region" /> representing the entity model.</returns>
+    public static Models.Region ToEntity(this Core.Models.Region domainModel)
+        => new()
+        {
+            Id = domainModel.Id,
+            Name = domainModel.Name,
+            Subregions = domainModel.Subregions.ToEntity()
+        };
 }
