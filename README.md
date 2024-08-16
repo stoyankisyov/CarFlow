@@ -1,8 +1,7 @@
 # CarFlow
 
-This is a project for car management.
-The development is done in Azure DevOps, and this is a copy as of 16/08/2024.
-In Azure DevOps, we use pull requests, backlogs, and tasks.
+This project is dedicated to car management and is being developed using Azure DevOps.
+As of August 16, 2024, the development workflow includes the use of pull requests, backlogs, and tasks within Azure DevOps.
 
-This is my backlog:
+Here is the latest snapshot of my backlog:
 ![image](https://github.com/user-attachments/assets/34446d6b-15f0-4698-acdc-f2a9dd0bf185)
