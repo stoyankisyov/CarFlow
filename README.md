@@ -1,7 +1,7 @@
 # CarFlow
 
 This is a project for car management.
-The development is done in Azure DevOps, and this is a copy as of 01/08/2024. Because of that, there is just one commit and no pull requests. 
+The development is done in Azure DevOps, and this is a copy as of 16/08/2024. Because of that, there is just one commit and no pull requests. 
 In Azure DevOps, we use pull requests, backlogs, and tasks.
 
 This is my backlog:
