@@ -27,9 +27,5 @@ public static class FuelTypeMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.FuelType" /> representing the entity model.</returns>
     public static Models.FuelType ToEntity(this Core.Models.FuelType domainModel)
-        => new()
-        {
-            Id = domainModel.Id,
-            Name = domainModel.Name
-        };
+        => new(domainModel.Id, domainModel.Name);
 }

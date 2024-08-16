@@ -1,22 +1,34 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class CombustionEngineCar
+public class CombustionEngineCar(
+    int id,
+    int modelId,
+    string? generation,
+    int bodyVariantId,
+    int transmissionVariantId,
+    int drivetrainId,
+    DateOnly startYear,
+    DateOnly? endYear,
+    int engineId,
+    int euroStandardId,
+    decimal? cityFuel,
+    decimal? combinedFuel,
+    decimal? highwayFuel)
+    : Car(id, modelId, generation, bodyVariantId, transmissionVariantId, drivetrainId, startYear, endYear)
 {
-    public int Id { get; set; }
+    public int EngineId { get; set; } = engineId;
 
-    public int EngineId { get; set; }
+    public int EuroStandardId { get; set; } = euroStandardId;
 
-    public int EuroStandardId { get; set; }
+    public decimal? CityFuel { get; set; } = cityFuel;
 
-    public decimal? CityFuel { get; set; }
+    public decimal? CombinedFuel { get; set; } = combinedFuel;
 
-    public decimal? CombinedFuel { get; set; }
+    public decimal? HighwayFuel { get; set; } = highwayFuel;
 
-    public decimal? HighwayFuel { get; set; }
+    public Engine Engine { get; set; } = null!;
 
-    public virtual Engine Engine { get; set; } = null!;
+    public EuroStandard EuroStandard { get; set; } = null!;
 
-    public virtual EuroStandard EuroStandard { get; set; } = null!;
-
-    public virtual Car IdNavigation { get; set; } = null!;
+    public Car IdNavigation { get; set; } = null!;
 }

@@ -26,6 +26,6 @@ public static class ModelMapper
             Id = domainModel.Id,
             Name = domainModel.Name,
             ModelVariant = domainModel.ModelVariant,
-            MakeId = domainModel.MakeId
+            BrandId = domainModel.BrandId
         };
 }

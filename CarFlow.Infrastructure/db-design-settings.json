@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "SQLConnection": "Server=(local)\\SQLEXPRESS;Database=CarFlow;Trusted_Connection=True;TrustServerCertificate=True;"
+  }
+}

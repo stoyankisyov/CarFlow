@@ -1,24 +1,23 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class Account
+public class Account(int id, string name, string email, string phone, string password, string? streetAddress)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public string Email { get; set; } = null!;
+    public string Email { get; set; } = email;
 
-    public string Phone { get; set; } = null!;
+    public string Phone { get; set; } = phone;
 
-    public string Password { get; set; } = null!;
+    public string Password { get; set; } = password;
 
-    public string? Address { get; set; }
+    public string? StreetAddress { get; set; } = streetAddress;
 
-    public virtual ICollection<CarAd> CarAdsNavigation { get; set; } = new List<CarAd>();
+    public ICollection<AccountRole> AccountRoles { get; set; } = new List<AccountRole>();
 
-    public virtual ICollection<CarAd> CarAds { get; set; } = new List<CarAd>();
+    public ICollection<CarAdvertisement> CarAdvertisements { get; set; } = new List<CarAdvertisement>();
 
-    public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
-
-    public virtual ICollection<Role> RolesNavigation { get; set; } = new List<Role>();
+    public ICollection<AccountFavouriteAdvertisement> AccountFavouriteAdvertisements { get; set; } =
+        new List<AccountFavouriteAdvertisement>();
 }

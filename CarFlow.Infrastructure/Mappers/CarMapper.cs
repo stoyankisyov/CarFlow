@@ -59,15 +59,10 @@ public static class CarMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.CombustionEngineCar" /> representing the entity model.</returns>
     public static Models.CombustionEngineCar ToEntity(this CombustionEngineCar domainModel)
-        => new()
-        {
-            EngineId = domainModel.Engine.Id,
-            EuroStandardId = domainModel.EuroStandard.Id,
-            CityFuel = domainModel.CityFuel,
-            CombinedFuel = domainModel.CombinedFuel,
-            HighwayFuel = domainModel.HighwayFuel,
-            IdNavigation = domainModel.ToCarEntity()
-        };
+        => new(domainModel.Id, domainModel.Model.Id, domainModel.Generation, domainModel.BodyVariant.Id,
+            domainModel.TransmissionVariant.Id, domainModel.Drivetrain.Id, domainModel.StartYear, domainModel.EndYear,
+            domainModel.Engine.Id, domainModel.EuroStandard.Id, domainModel.CityFuel, domainModel.CombinedFuel,
+            domainModel.HighwayFuel);
 
     /// <summary>
     ///     Converts a domain model of type <see cref="ElectricCar" /> to an entity model of type
@@ -76,15 +71,10 @@ public static class CarMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.ElectricCar" /> representing the entity model.</returns>
     public static Models.ElectricCar ToEntity(this ElectricCar domainModel)
-        => new()
-        {
-            Horsepower = domainModel.Horsepower,
-            Torque = domainModel.Torque,
-            BatteryCapacity = domainModel.BatteryCapacity,
-            Range = domainModel.Range,
-            MotorCount = domainModel.MotorCount,
-            IdNavigation = domainModel.ToCarEntity()
-        };
+        => new(domainModel.Id, domainModel.Model.Id, domainModel.Generation, domainModel.BodyVariant.Id,
+            domainModel.TransmissionVariant.Id, domainModel.Drivetrain.Id, domainModel.StartYear, domainModel.EndYear,
+            domainModel.Horsepower, domainModel.Torque, domainModel.BatteryCapacity, domainModel.Range,
+            domainModel.MotorCount);
 
     /// <summary>
     ///     Converts a domain model of type <see cref="CombustionEngineCar" /> to a base car entity model of type
@@ -93,16 +83,8 @@ public static class CarMapper
     /// <param name="domainModel">The combustion engine car domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.Car" /> representing the base entity model.</returns>
     private static Models.Car ToCarEntity(this CombustionEngineCar domainModel)
-        => new()
-        {
-            ModelId = domainModel.Model.Id,
-            Generation = domainModel.Generation,
-            BodyVariantId = domainModel.BodyVariant.Id,
-            TransmissionVariantId = domainModel.TransmissionVariant.Id,
-            DrivetrainId = domainModel.Drivetrain.Id,
-            StartYear = domainModel.StartYear,
-            EndYear = domainModel.EndYear
-        };
+        => new(domainModel.Id, domainModel.Model.Id, domainModel.Generation, domainModel.BodyVariant.Id,
+            domainModel.TransmissionVariant.Id, domainModel.Drivetrain.Id, domainModel.StartYear, domainModel.EndYear);
 
     /// <summary>
     ///     Converts a domain model of type <see cref="ElectricCar" /> to a base car entity model of type
@@ -111,16 +93,8 @@ public static class CarMapper
     /// <param name="domainModel">The electric car domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.Car" /> representing the base entity model.</returns>
     private static Models.Car ToCarEntity(this ElectricCar domainModel)
-        => new()
-        {
-            ModelId = domainModel.Model.Id,
-            Generation = domainModel.Generation,
-            BodyVariantId = domainModel.BodyVariant.Id,
-            TransmissionVariantId = domainModel.TransmissionVariant.Id,
-            DrivetrainId = domainModel.Drivetrain.Id,
-            StartYear = domainModel.StartYear,
-            EndYear = domainModel.EndYear
-        };
+        => new(domainModel.Id, domainModel.Model.Id, domainModel.Generation, domainModel.BodyVariant.Id,
+            domainModel.TransmissionVariant.Id, domainModel.Drivetrain.Id, domainModel.StartYear, domainModel.EndYear);
 
     // TODO: story 87
     /// <summary>
@@ -130,7 +104,7 @@ public static class CarMapper
     /// <param name="entity">The car entity model instance to be converted.</param>
     /// <returns>A new instance of <see cref="CombustionEngineCar" /> representing the combustion engine car domain model.</returns>
     private static CombustionEngineCar ToCombustionEngineCarDomainModel(this Models.Car entity)
-        => new(entity.Id, entity.Model.Make.ToDomainModel(), entity.Model.ToDomainModel(), entity.Generation, new Body(
+        => new(entity.Id, entity.Model.Brand.ToDomainModel(), entity.Model.ToDomainModel(), entity.Generation, new Body(
                 1, "Sedan",
                 [entity.BodyVariant.ToDomainModel()]), entity.BodyVariant.ToDomainModel(),
             entity.TransmissionVariant.Transmission.ToDomainModel(),
@@ -147,7 +121,7 @@ public static class CarMapper
     /// <param name="entity">The car entity model instance to be converted.</param>
     /// <returns>A new instance of <see cref="ElectricCar" /> representing the electric car domain model.</returns>
     private static ElectricCar ToElectricCarDomainModel(this Models.Car entity)
-        => new(entity.Id, entity.Model.Make.ToDomainModel(), entity.Model.ToDomainModel(), entity.Generation, new Body(
+        => new(entity.Id, entity.Model.Brand.ToDomainModel(), entity.Model.ToDomainModel(), entity.Generation, new Body(
                 1, "Sedan",
                 [entity.BodyVariant.ToDomainModel()]), entity.BodyVariant.ToDomainModel(),
             entity.TransmissionVariant.Transmission.ToDomainModel(),

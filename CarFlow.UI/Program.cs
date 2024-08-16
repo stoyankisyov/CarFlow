@@ -7,11 +7,9 @@ using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// AddAsync services to the container.
-
 builder.Services.AddDbContext<CarFlowContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SQLConnection") ??
-                         throw new InvalidOperationException("Connection string 'SQLConnection' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SQLConnection")));
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddControllersWithViews(options =>
 {

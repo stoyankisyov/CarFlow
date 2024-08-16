@@ -9,7 +9,7 @@ public static class ModelMapper
     /// <param name="entity">The entity model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Core.Models.Model" /> representing the domain model.</returns>
     public static Core.Models.Model ToDomainModel(this Models.Model entity)
-        => new(entity.Id, entity.Name, entity.MakeId, entity.ModelVariant);
+        => new(entity.Id, entity.Name, entity.BrandId, entity.ModelVariant);
 
     /// <summary>
     ///     Converts an enumerable collection of entity models of type <see cref="Models.Model" /> to a list of domain models
@@ -37,11 +37,5 @@ public static class ModelMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.Model" /> representing the entity model.</returns>
     private static Models.Model ToEntity(this Core.Models.Model domainModel)
-        => new()
-        {
-            Id = domainModel.Id,
-            Name = domainModel.Name,
-            ModelVariant = domainModel.ModelVariant,
-            MakeId = domainModel.MakeId
-        };
+        => new(domainModel.Id, domainModel.BrandId, domainModel.Name, domainModel.ModelVariant);
 }

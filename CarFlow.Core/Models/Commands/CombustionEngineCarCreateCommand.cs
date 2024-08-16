@@ -16,8 +16,12 @@ public class CombustionEngineCarCreateCommand(
     : CarCreateCommand(model, generation, bodyVariant, transmissionVariant, drivetrain, startYear, endYear)
 {
     public int EngineId { get; } = engineId;
+
     public EuroStandard EuroStandard { get; } = euroStandard;
+
     public decimal? CityFuel { get; } = cityFuel;
+
     public decimal? CombinedFuel { get; } = combinedFuel;
+
     public decimal? HighwayFuel { get; } = highwayFuel;
 }

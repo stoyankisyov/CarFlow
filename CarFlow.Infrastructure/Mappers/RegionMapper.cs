@@ -28,10 +28,8 @@ public static class RegionMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.Region" /> representing the entity model.</returns>
     public static Models.Region ToEntity(this Core.Models.Region domainModel)
-        => new()
+        => new(domainModel.Id, domainModel.Name)
         {
-            Id = domainModel.Id,
-            Name = domainModel.Name,
             Subregions = domainModel.Subregions.ToEntity()
         };
 }

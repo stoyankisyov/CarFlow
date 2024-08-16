@@ -1,6 +1,6 @@
 ﻿function deleteFuelType(id) {
     if (confirm("Are you sure you want to delete this fuel type?")) {
-        fetch('/FuelType/Delete/' + id, {
+        fetch('/FuelTypes/Delete/' + id, {
             method: 'DELETE'
         }).then(response => {
             if (response.ok) {

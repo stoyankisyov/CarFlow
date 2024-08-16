@@ -2,7 +2,7 @@
 
 public class CombustionEngineCar(
     int id,
-    Make make,
+    Brand brand,
     Model model,
     string? generation,
     Body body,
@@ -17,7 +17,7 @@ public class CombustionEngineCar(
     decimal? cityFuel,
     decimal? combinedFuel,
     decimal? highwayFuel)
-    : Car(id, make, model, generation, body, bodyVariant, transmission, transmissionVariant, drivetrain, startYear,
+    : Car(id, brand, model, generation, body, bodyVariant, transmission, transmissionVariant, drivetrain, startYear,
         endYear)
 {
     public Engine Engine { get; } = engine;

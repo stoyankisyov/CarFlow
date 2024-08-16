@@ -1,6 +1,6 @@
 ﻿function deleteEngine(id) {
     if (confirm("Are you sure you want to delete this engine?")) {
-        fetch('/Engine/Delete/' + id, {
+        fetch('/Engines/Delete/' + id, {
             method: 'DELETE'
         }).then(response => {
             if (response.ok) {

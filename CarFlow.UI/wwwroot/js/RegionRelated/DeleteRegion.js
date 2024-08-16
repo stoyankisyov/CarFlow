@@ -1,6 +1,6 @@
 ﻿function deleteRegion(id) {
     if (confirm("Are you sure you want to delete this region?")) {
-        fetch('/Region/Delete/' + id, {
+        fetch('/Regions/Delete/' + id, {
             method: 'DELETE'
         }).then(response => {
             if (response.ok) {

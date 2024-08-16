@@ -1,6 +1,6 @@
 ﻿function deleteTransmissionType(id) {
     if (confirm("Are you sure you want to delete this transmission?")) {
-        fetch('/Transmission/Delete/' + id, {
+        fetch('/Transmissions/Delete/' + id, {
             method: 'DELETE'
         }).then(response => {
             if (response.ok) {

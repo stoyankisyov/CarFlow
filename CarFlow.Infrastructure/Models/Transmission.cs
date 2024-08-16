@@ -1,11 +1,11 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class Transmission
+public class Transmission(int id, string name)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public virtual ICollection<TransmissionVariant> TransmissionVariants { get; set; } =
+    public ICollection<TransmissionVariant> TransmissionVariants { get; set; } =
         new List<TransmissionVariant>();
 }

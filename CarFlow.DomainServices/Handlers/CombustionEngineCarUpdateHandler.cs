@@ -7,19 +7,19 @@ using CarFlow.DomainServices.ExtensionMethods;
 namespace CarFlow.DomainServices.Handlers;
 
 public class CombustionEngineCarUpdateHandler(
-    IMakeRepository makeRepository,
+    IBrandRepository brandRepository,
     ITransmissionRepository transmissionRepository,
     IEngineRepository engineRepository)
     : PolymorphicCommandHandler<CarCommand, CombustionEngineCarUpdateCommand, Car>
 {
     public override async Task<Car> Handle(CombustionEngineCarUpdateCommand command)
     {
-        var model = await makeRepository
+        var model = await brandRepository
             .GetModelAsync(command.Model.Id)
             .ValidateNull("Model not found");
-        var make = await makeRepository
-            .GetAsync(model.MakeId)
-            .ValidateNull("Make not found");
+        var brand = await brandRepository
+            .GetAsync(model.BrandId)
+            .ValidateNull("Brand not found");
         var transmissionVariant = await transmissionRepository
             .GetVariantAsync(command.TransmissionVariant.Id)
             .ValidateNull("Transmission variant not found");
@@ -36,7 +36,7 @@ public class CombustionEngineCarUpdateHandler(
 
         var carBuilder = new CombustionEngineCarBuilder();
         var car = carBuilder.WithId(command.Id)
-            .WithMake(make)
+            .WithBrand(brand)
             .WithModel(model)
             .WithGeneration(command.Generation)
             .WithBody(body)

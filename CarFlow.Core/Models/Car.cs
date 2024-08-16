@@ -4,7 +4,7 @@ namespace CarFlow.Core.Models;
 
 public abstract class Car(
     int id,
-    Make make,
+    Brand brand,
     Model model,
     string generation,
     Body body,
@@ -17,7 +17,7 @@ public abstract class Car(
 )
 {
     public int Id { get; } = id;
-    public Make Make { get; } = make;
+    public Brand Brand { get; } = brand;
     public Model Model { get; } = model;
     public string Generation { get; } = generation;
     public Body Body { get; } = body;

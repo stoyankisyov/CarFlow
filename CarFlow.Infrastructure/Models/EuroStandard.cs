@@ -1,11 +1,11 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class EuroStandard
+public class EuroStandard(int id, string name)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public virtual ICollection<CombustionEngineCar> CombustionEngineCars { get; set; } =
+    public ICollection<CombustionEngineCar> CombustionEngineCars { get; set; } =
         new List<CombustionEngineCar>();
 }

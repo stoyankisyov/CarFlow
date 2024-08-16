@@ -6,7 +6,7 @@ using CarFlow.UI.Models.ViewModels;
 namespace CarFlow.UI.Managers;
 
 public class CarOptionsManager(
-    IMakeService makeService,
+    IBrandService brandService,
     ITransmissionService transmissionService,
     IDrivetrainService drivetrainService,
     IEngineService engineService)
@@ -15,8 +15,8 @@ public class CarOptionsManager(
     public async Task<CarBaseManagementOptionsViewModel> GetCarBaseOptionsAsync()
         => new()
         {
-            Makes = (await makeService.GetAllAsync()).ToViewModel(),
-            Models = (await makeService.GetAllModelsAsync()).ToViewModel(),
+            Brands = (await brandService.GetAllAsync()).ToViewModel(),
+            Models = (await brandService.GetAllModelsAsync()).ToViewModel(),
             Transmissions = (await transmissionService.GetAllAsync()).ToViewModel(),
             TransmissionVariants = (await transmissionService.GetAllVariantsAsync()).ToViewModel(),
             Drivetrains = (await drivetrainService.GetAllAsync()).ToViewModel()

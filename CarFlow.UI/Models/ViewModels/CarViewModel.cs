@@ -8,7 +8,7 @@ public abstract class CarViewModel
 {
     public int Id { get; init; }
     public CarType CarType { get; init; }
-    public MakeViewModel Make { get; set; }
+    public BrandViewModel Brand { get; set; }
     public ModelViewModel Model { get; init; }
     public string Generation { get; init; }
     public BodyViewModel Body { get; set; }

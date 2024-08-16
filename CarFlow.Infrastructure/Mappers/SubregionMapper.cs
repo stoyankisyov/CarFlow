@@ -38,10 +38,5 @@ public static class SubregionMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.Subregion" /> representing the entity model.</returns>
     private static Models.Subregion ToEntity(this Core.Models.Subregion domainModel)
-        => new()
-        {
-            Id = domainModel.Id,
-            Name = domainModel.Name,
-            RegionId = domainModel.RegionId
-        };
+        => new(domainModel.Id, domainModel.RegionId, domainModel.Name);
 }

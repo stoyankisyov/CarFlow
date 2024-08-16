@@ -50,7 +50,7 @@ public static class CarMapper
             Generation = domainModel.Generation,
             StartYear = domainModel.StartYear,
             EndYear = domainModel.EndYear,
-            Make = domainModel.Make.ToContract(),
+            Brand = domainModel.Brand.ToContract(),
             Model = domainModel.Model.ToContract(),
             Body = domainModel.Body.ToContract(),
             BodyVariant = domainModel.BodyVariant.ToContract(),
@@ -75,7 +75,7 @@ public static class CarMapper
         {
             Id = domainModel.Id,
             CarType = CarType.ElectricCar,
-            Make = domainModel.Make.ToContract(),
+            Brand = domainModel.Brand.ToContract(),
             Model = domainModel.Model.ToContract(),
             Body = domainModel.Body.ToContract(),
             BodyVariant = domainModel.BodyVariant.ToContract(),

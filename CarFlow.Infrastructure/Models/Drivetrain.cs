@@ -1,10 +1,10 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class Drivetrain
+public class Drivetrain(int id, string name)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
+    public ICollection<Car> Cars { get; set; } = new List<Car>();
 }

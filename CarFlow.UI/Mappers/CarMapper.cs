@@ -116,7 +116,7 @@ public static class CarMapper
             viewViewModel.Generation, viewViewModel.BodyVariant.ToDomainModel(),
             viewViewModel.TransmissionVariant.ToDomainModel(), viewViewModel.Drivetrain.ToDomainModel(),
             viewViewModel.StartYear, viewViewModel.EndYear, viewViewModel.Engine.Id,
-            viewViewModel.Eurostandard.ToDomainModel(), viewViewModel.CityFuel,
+            viewViewModel.EuroStandard.ToDomainModel(), viewViewModel.CityFuel,
             viewViewModel.CombinedFuel, viewViewModel.HighwayFuel);
 
     /// <summary>
@@ -134,7 +134,7 @@ public static class CarMapper
             viewViewModel.Generation, viewViewModel.BodyVariant.ToDomainModel(),
             viewViewModel.TransmissionVariant.ToDomainModel(), viewViewModel.Drivetrain.ToDomainModel(),
             viewViewModel.StartYear, viewViewModel.EndYear, viewViewModel.Engine.Id,
-            viewViewModel.Eurostandard.ToDomainModel(), viewViewModel.CityFuel,
+            viewViewModel.EuroStandard.ToDomainModel(), viewViewModel.CityFuel,
             viewViewModel.CombinedFuel, viewViewModel.HighwayFuel);
 
     /// <summary>
@@ -181,7 +181,7 @@ public static class CarMapper
             Generation = domainModel.Generation,
             StartYear = domainModel.StartYear,
             EndYear = domainModel.EndYear,
-            Make = domainModel.Make.ToViewModel(),
+            Brand = domainModel.Brand.ToViewModel(),
             Model = domainModel.Model.ToViewModel(),
             Body = domainModel.Body.ToViewModel(),
             BodyVariant = domainModel.BodyVariant.ToViewModel(),
@@ -189,7 +189,7 @@ public static class CarMapper
             TransmissionVariant = domainModel.TransmissionVariant.ToViewModel(),
             Drivetrain = domainModel.Drivetrain.ToViewModel(),
             Engine = domainModel.Engine.ToViewModel(),
-            Eurostandard = domainModel.EuroStandard.ToViewModel(),
+            EuroStandard = domainModel.EuroStandard.ToViewModel(),
             CityFuel = domainModel.CityFuel,
             CombinedFuel = domainModel.CombinedFuel,
             HighwayFuel = domainModel.HighwayFuel
@@ -206,7 +206,7 @@ public static class CarMapper
         {
             Id = domainModel.Id,
             CarType = CarType.ElectricCar,
-            Make = domainModel.Make.ToViewModel(),
+            Brand = domainModel.Brand.ToViewModel(),
             Model = domainModel.Model.ToViewModel(),
             Generation = domainModel.Generation,
             Body = domainModel.Body.ToViewModel(),

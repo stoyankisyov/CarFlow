@@ -9,11 +9,9 @@ namespace CarFlow.UI.Controllers;
 public class DrivetrainsController(IDrivetrainService drivetrainService) : Controller
 {
     private const string AdminPolicy = "AdminPolicy";
-    private const string ManagerPolicy = "ManagerPolicy";
 
     [HttpGet]
     [Authorize(Policy = AdminPolicy)]
-    [Authorize(Policy = ManagerPolicy)]
     public async Task<IActionResult> Index(int currentPage = 1, int pageSize = 20)
     {
         var pageViewModel = (await drivetrainService.GetPageAsync(currentPage, pageSize)).ToViewModel();

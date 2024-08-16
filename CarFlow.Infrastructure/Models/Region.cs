@@ -1,10 +1,10 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class Region
+public class Region(int id, string name)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public virtual ICollection<Subregion> Subregions { get; set; } = new List<Subregion>();
+    public ICollection<Subregion> Subregions { get; set; } = new List<Subregion>();
 }

@@ -13,7 +13,7 @@ public class ElectricCarBuilderBase<TBuilder>
     private int _torque;
 
     public override Car Build() =>
-        new ElectricCar(Id, Make, Model, Generation, Body, BodyVariant, Transmission,
+        new ElectricCar(Id, Brand, Model, Generation, Body, BodyVariant, Transmission,
             TransmissionVariant, Drivetrain, StartYear, EndYear, _horsepower, _torque, _batteryCapacity, _range,
             _motorCount);
 

@@ -48,11 +48,11 @@ public static class PageMapper
         };
 
     /// <summary>
-    ///     Converts a domain model of makes to a view model representing a paged collection of makes.
+    ///     Converts a domain model of brands to a view model representing a paged collection of brands.
     /// </summary>
     /// <param name="domainModel">The domain model to be converted.</param>
-    /// <returns>A new instance of view model representing a paged collection of makes.</returns>
-    public static PageViewModel<MakeViewModel> ToViewModel(this Page<Make> domainModel)
+    /// <returns>A new instance of view model representing a paged collection of brands.</returns>
+    public static PageViewModel<BrandViewModel> ToViewModel(this Page<Brand> domainModel)
         => new()
         {
             PagesCount = domainModel.PageCount,

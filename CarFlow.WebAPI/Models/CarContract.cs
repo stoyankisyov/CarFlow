@@ -8,7 +8,7 @@ public abstract class CarContract
 {
     public int Id { get; set; }
     public CarType CarType { get; set; }
-    public MakeContract Make { get; set; }
+    public BrandContract Brand { get; set; }
     public ModelContract Model { get; set; }
     public string Generation { get; set; }
     public BodyContract Body { get; set; }

@@ -31,14 +31,14 @@
                     <td>
                         @if (car is CombustionEngineCarViewViewModel combustionEngineCarViewModel)
                         {
-                            <h5 class="text-black text-center mt-3">@combustionEngineCarViewModel.Eurostandard.Name</h5>
+                            <h5 class="text-black text-center mt-3">@combustionEngineCarViewModel.EuroStandard.Name</h5>
                             <h5 class="text-black text-center mt-3">@combustionEngineCarViewModel.Engine.Configuration.Name</h5>
-                            <h5 class="text-black text-center mt-3">@combustionEngineCarViewModel.Make.Name</h5>
+                            <h5 class="text-black text-center mt-3">@combustionEngineCarViewModel.Brand.Name</h5>
                             <h5 class="text-black text-center mt-3">@combustionEngineCarViewModel.Transmission.Name</h5>
                         }
                         @if (car is ElectricCarViewViewModel electricCar)
                         {
-                            <h5 class="text-black text-center mt-3">@electricCar.Make.Name</h5>
+                            <h5 class="text-black text-center mt-3">@electricCar.Brand.Name</h5>
                             <h5 class="text-black text-center mt-3">@electricCar.Transmission.Name</h5>
                         }
                     </td>

@@ -2,7 +2,7 @@
 
 public class ElectricCar(
     int id,
-    Make make,
+    Brand brand,
     Model model,
     string? generation,
     Body body,
@@ -17,7 +17,7 @@ public class ElectricCar(
     int batteryCapacity,
     int range,
     int motorCount)
-    : Car(id, make, model, generation, body, bodyVariant, transmission, transmissionVariant, drivetrain, startYear,
+    : Car(id, brand, model, generation, body, bodyVariant, transmission, transmissionVariant, drivetrain, startYear,
         endYear)
 {
     public int Horsepower { get; } = horsepower;

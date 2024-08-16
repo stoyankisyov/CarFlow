@@ -1,10 +1,10 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class Body
+public class Body(int id, string name)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public virtual ICollection<BodyVariant> BodyVariants { get; set; } = new List<BodyVariant>();
+    public ICollection<BodyVariant> BodyVariants { get; set; } = new List<BodyVariant>();
 }

@@ -9,11 +9,11 @@ public abstract class CarBuilder<TSelf>
 {
     protected Body Body;
     protected BodyVariant BodyVariant;
+    protected Brand Brand;
     protected Drivetrain Drivetrain;
     protected DateOnly? EndYear;
     protected string Generation;
     protected int Id;
-    protected Make Make;
     protected Model Model;
     protected DateOnly StartYear;
     protected Transmission Transmission;
@@ -26,9 +26,9 @@ public abstract class CarBuilder<TSelf>
         return (TSelf)this;
     }
 
-    public TSelf WithMake(Make make)
+    public TSelf WithBrand(Brand brand)
     {
-        Make = make;
+        Brand = brand;
 
         return (TSelf)this;
     }

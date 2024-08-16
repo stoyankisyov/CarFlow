@@ -1,12 +1,12 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class Color
+public class Color(int id, string name)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public virtual ICollection<CarAd> CarAdExteriorColors { get; set; } = new List<CarAd>();
+    public ICollection<CarAdvertisement> CarAdvertisementExteriorColors { get; set; } = new List<CarAdvertisement>();
 
-    public virtual ICollection<CarAd> CarAdInteriorColors { get; set; } = new List<CarAd>();
+    public ICollection<CarAdvertisement> CarAdvertisementInteriorColors { get; set; } = new List<CarAdvertisement>();
 }

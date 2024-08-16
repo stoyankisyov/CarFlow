@@ -40,10 +40,5 @@ public static class TransmissionVariantsMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.TransmissionVariant" /> representing the entity model.</returns>
     private static Models.TransmissionVariant ToEntity(this Core.Models.TransmissionVariant domainModel)
-        => new()
-        {
-            Id = domainModel.Id,
-            TransmissionId = domainModel.TransmissionId,
-            GearCount = domainModel.GearCount
-        };
+        => new(domainModel.Id, domainModel.TransmissionId, domainModel.GearCount);
 }

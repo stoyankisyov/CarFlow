@@ -1,12 +1,13 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class Feature
+public class Feature(int id, string name)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public virtual ICollection<CarAd> CarAds { get; set; } = new List<CarAd>();
+    public ICollection<CarAdvertisementFeature> CarAdvertisementFeatures { get; set; } =
+        new List<CarAdvertisementFeature>();
 
-    public virtual ICollection<Model> Models { get; set; } = new List<Model>();
+    public ICollection<ModelStandardFeature> ModelStandardFeatures { get; set; } = new List<ModelStandardFeature>();
 }

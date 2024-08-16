@@ -1,16 +1,16 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class BodyVariant
+public class BodyVariant(int id, int bodyId, int doorCount, int seatCount)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public int BodyId { get; set; }
+    public int BodyId { get; init; } = bodyId;
 
-    public int DoorCount { get; set; }
+    public int DoorCount { get; set; } = doorCount;
 
-    public int SeatCount { get; set; }
+    public int SeatCount { get; set; } = seatCount;
 
-    public virtual Body Body { get; set; } = null!;
+    public Body Body { get; set; } = null!;
 
-    public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
+    public ICollection<Car> Cars { get; set; } = new List<Car>();
 }

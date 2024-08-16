@@ -1,12 +1,12 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class PromotionType
+public class PromotionType(int id, string name, decimal price)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public decimal Price { get; set; }
+    public decimal Price { get; set; } = price;
 
-    public virtual ICollection<Promotion> Promotions { get; set; } = new List<Promotion>();
+    public ICollection<Promotion> Promotions { get; set; } = new List<Promotion>();
 }

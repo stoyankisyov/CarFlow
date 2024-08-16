@@ -15,7 +15,7 @@ public class CombustionEngineCarBuilderBase<TBuilder>
     private decimal? _highwayFue;
 
     public override Car Build() =>
-        new CombustionEngineCar(Id, Make, Model, Generation, Body, BodyVariant, Transmission,
+        new CombustionEngineCar(Id, Brand, Model, Generation, Body, BodyVariant, Transmission,
             TransmissionVariant, Drivetrain, StartYear, EndYear, _engine, _euroStandard, _cityFuel,
             _combinedFuel, _highwayFue);
 

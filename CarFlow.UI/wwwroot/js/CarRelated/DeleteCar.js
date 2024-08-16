@@ -1,6 +1,6 @@
 ﻿function deleteCar(id) {
     if (confirm("Are you sure you want to delete this car?")) {
-        fetch('/Car/Delete/' + id, {
+        fetch('/Cars/Delete/' + id, {
             method: 'DELETE'
         }).then(response => {
             if (response.ok) {

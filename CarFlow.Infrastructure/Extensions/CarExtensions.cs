@@ -8,7 +8,7 @@ internal static class CarExtensions
     public static IQueryable<Car> IncludeCarDetails(this IQueryable<Car> query)
         => query
             .Include(x => x.Model)
-            .ThenInclude(x => x.Make)
+            .ThenInclude(x => x.Brand)
             .Include(x => x.BodyVariant)
             .ThenInclude(x => x.Body)
             .Include(x => x.TransmissionVariant)

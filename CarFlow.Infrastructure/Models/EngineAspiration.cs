@@ -1,10 +1,10 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class EngineAspiration
+public class EngineAspiration(int id, string name)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public virtual ICollection<Engine> Engines { get; set; } = new List<Engine>();
+    public ICollection<Engine> Engines { get; set; } = new List<Engine>();
 }

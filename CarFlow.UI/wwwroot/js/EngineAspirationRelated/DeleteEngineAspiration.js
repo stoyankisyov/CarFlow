@@ -1,6 +1,6 @@
 ﻿function deleteEngineAspiration(id) {
     if (confirm("Are you sure you want to delete this engine aspiration?")) {
-        fetch('/EngineAspiration/Delete/' + id, {
+        fetch('/EngineAspirations/Delete/' + id, {
             method: 'DELETE'
         }).then(response => {
             if (response.ok) {

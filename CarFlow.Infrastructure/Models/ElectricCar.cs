@@ -1,18 +1,30 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class ElectricCar
+public class ElectricCar(
+    int id,
+    int modelId,
+    string? generation,
+    int bodyVariantId,
+    int transmissionVariantId,
+    int drivetrainId,
+    DateOnly startYear,
+    DateOnly? endYear,
+    int horsepower,
+    int torque,
+    int batteryCapacity,
+    int range,
+    int motorCount)
+    : Car(id, modelId, generation, bodyVariantId, transmissionVariantId, drivetrainId, startYear, endYear)
 {
-    public int Id { get; set; }
+    public int Horsepower { get; set; } = horsepower;
 
-    public int Horsepower { get; set; }
+    public int Torque { get; set; } = torque;
 
-    public int Torque { get; set; }
+    public int BatteryCapacity { get; set; } = batteryCapacity;
 
-    public int BatteryCapacity { get; set; }
+    public int Range { get; set; } = range;
 
-    public int Range { get; set; }
+    public int MotorCount { get; set; } = motorCount;
 
-    public int MotorCount { get; set; }
-
-    public virtual Car IdNavigation { get; set; } = null!;
+    public Car IdNavigation { get; set; } = null!;
 }

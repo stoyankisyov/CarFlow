@@ -1,0 +1,38 @@
+﻿@model BrandViewModel
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary text-center">Create Brand</h2>
+        </div>
+        <div class="mb-3">
+            <label for="Name">Brand</label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div id="model-container">
+            <div class="model">
+                <div class="mb-3">
+                    <label for="Model[0].Name">Model Name</label>
+                    <input type="text" name="Models[0].Name" class="form-control"/>
+                    <label for="Model[0].ModelVariant">Model Variant</label>
+                    <input type="text" name="Models[0].ModelVariant" class="form-control"/>
+                    <span class="text-danger" data-valmsg-for="Models[0].Name" data-valmsg-replace="true"></span>
+                    <span class="text-danger" data-valmsg-for="Models[0].ModelVariant" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-3 mb-3">
+            <div class="addModelButtonContainer">
+                <button type="button" id="add-model">Add Model</button>
+            </div>
+        </div>
+
+        <div class="actionButtonsContainer">
+            <button type="submit" class="actionButton addButton">Create</button>
+            <a asp-action="Index" asp-controller="Brands" class="actionButton backButton">Back</a>
+        </div>
+    </div>
+</form>
+
+<script src="~/js/BrandRelated/AddModel.js"></script>

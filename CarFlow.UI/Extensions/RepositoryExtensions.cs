@@ -10,7 +10,7 @@ public static class RepositoryExtensions
         services.AddScoped<IAccountRepositоry, AccountRepository>();
         services.AddScoped<IRoleRepository, RoleRepository>();
         services.AddScoped<ICarRepository, CarRepository>();
-        services.AddScoped<IMakeRepository, MakeRepository>();
+        services.AddScoped<IBrandRepository, BrandRepository>();
         services.AddScoped<ITransmissionRepository, TransmissionRepository>();
         services.AddScoped<IDrivetrainRepository, DrivetrainRepository>();
         services.AddScoped<IEngineRepository, EngineRepository>();

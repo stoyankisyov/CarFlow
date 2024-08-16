@@ -1,14 +1,14 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class TransmissionVariant
+public class TransmissionVariant(int id, int transmissionId, int gearCount)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public int TransmissionId { get; set; }
+    public int TransmissionId { get; init; } = transmissionId;
 
-    public int GearCount { get; set; }
+    public int GearCount { get; set; } = gearCount;
 
-    public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
+    public Transmission Transmission { get; set; } = null!;
 
-    public virtual Transmission Transmission { get; set; } = null!;
+    public ICollection<Car> Cars { get; set; } = new List<Car>();
 }

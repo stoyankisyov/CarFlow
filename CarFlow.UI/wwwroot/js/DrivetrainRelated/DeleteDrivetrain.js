@@ -1,6 +1,6 @@
 ﻿function deleteDrivetrain(id) {
     if (confirm("Are you sure you want to delete this drivetrain?")) {
-        fetch('/Drivetrain/Delete/' + id, {
+        fetch('/Drivetrains/Delete/' + id, {
             method: 'DELETE'
         }).then(response => {
             if (response.ok) {

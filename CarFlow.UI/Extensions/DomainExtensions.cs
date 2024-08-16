@@ -15,7 +15,7 @@ public static class DomainExtensions
         services.AddScoped<IPasswordHasherService, PasswordHasherService>();
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<ICarService, CarService>();
-        services.AddScoped<IMakeService, MakeService>();
+        services.AddScoped<IBrandService, BrandService>();
         services.AddScoped<ITransmissionService, TransmissionService>();
         services.AddScoped<IDrivetrainService, DrivetrainService>();
         services.AddScoped<IEngineService, EngineService>();

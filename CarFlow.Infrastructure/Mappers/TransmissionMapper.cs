@@ -28,10 +28,8 @@ public static class TransmissionMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.Transmission" /> representing the entity model.</returns>
     public static Models.Transmission ToEntity(this Core.Models.Transmission domainModel)
-        => new()
+        => new(domainModel.Id, domainModel.Name)
         {
-            Id = domainModel.Id,
-            Name = domainModel.Name,
             TransmissionVariants = domainModel.TransmissionVariants.ToEntity()
         };
 }

@@ -30,15 +30,6 @@ public static class EngineMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.Engine" /> representing the entity model.</returns>
     public static Models.Engine ToEntity(this Core.Models.Engine domainModel)
-        => new()
-        {
-            Id = domainModel.Id,
-            Model = domainModel.Model,
-            Displacement = domainModel.Displacement,
-            Horsepower = domainModel.Horsepower,
-            Torque = domainModel.Torque,
-            FuelTypeId = domainModel.FuelType.Id,
-            ConfigurationId = domainModel.Configuration.Id,
-            AspirationId = domainModel.Aspiration.Id
-        };
+        => new(domainModel.Id, domainModel.Model, domainModel.Displacement, domainModel.Horsepower, domainModel.Torque,
+            domainModel.FuelType.Id, domainModel.Configuration.Id, domainModel.Aspiration.Id);
 }

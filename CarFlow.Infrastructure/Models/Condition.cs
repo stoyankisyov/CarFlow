@@ -1,10 +1,10 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class Condition
+public class Condition(int id, string name)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } = name;
 
-    public virtual ICollection<CarAd> CarAds { get; set; } = new List<CarAd>();
+    public ICollection<CarAdvertisement> CarAdvertisements { get; set; } = new List<CarAdvertisement>();
 }

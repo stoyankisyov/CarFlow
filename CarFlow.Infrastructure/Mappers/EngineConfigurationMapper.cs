@@ -29,10 +29,5 @@ public static class EngineConfigurationMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.EngineConfiguration" /> representing the entity model.</returns>
     public static Models.EngineConfiguration ToEntity(this Core.Models.EngineConfiguration domainModel)
-        => new()
-        {
-            Id = domainModel.Id,
-            Name = domainModel.Name,
-            CylinderCount = domainModel.CylinderCount
-        };
+        => new(domainModel.Id, domainModel.Name, domainModel.CylinderCount);
 }

@@ -10,12 +10,8 @@ public class RoleRepository(CarFlowContext context) : IRoleRepository
 {
     public async Task<Role?> GetUserRoleAsync()
     {
-        var roleEntity = await context.Roles.SingleOrDefaultAsync(x => x.Name == "User");
-
-        if (roleEntity is not null)
-        {
-            context.Roles.Entry(roleEntity).State = EntityState.Detached;
-        }
+        var roleEntity = await context.Roles
+            .SingleOrDefaultAsync(x => x.Name == "User");
 
         return roleEntity?.ToDomainModel();
     }

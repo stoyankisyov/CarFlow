@@ -28,9 +28,5 @@ public static class DrivetrainMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.Drivetrain" /> representing the entity model.</returns>
     public static Models.Drivetrain ToEntity(this Core.Models.Drivetrain domainModel)
-        => new()
-        {
-            Id = domainModel.Id,
-            Name = domainModel.Name
-        };
+        => new(domainModel.Id, domainModel.Name);
 }

@@ -1,16 +1,16 @@
 ﻿namespace CarFlow.Infrastructure.Models;
 
-public class Promotion
+public class Promotion(int id, int carAdvertisementId, int promotionTypeId, DateTime expirationDate)
 {
-    public int Id { get; set; }
+    public int Id { get; init; } = id;
 
-    public int CarAdId { get; set; }
+    public int CarAdvertisementId { get; init; } = carAdvertisementId;
 
-    public int PromotionTypeId { get; set; }
+    public int PromotionTypeId { get; set; } = promotionTypeId;
 
-    public DateTime ExpirationDate { get; set; }
+    public DateTime ExpirationDate { get; set; } = expirationDate;
 
-    public virtual CarAd CarAd { get; set; } = null!;
+    public CarAdvertisement CarAdvertisement { get; set; } = null!;
 
-    public virtual PromotionType PromotionType { get; set; } = null!;
+    public PromotionType PromotionType { get; set; } = null!;
 }

@@ -28,9 +28,5 @@ public static class EngineAspirationMapper
     /// <param name="domainModel">The domain model instance to be converted.</param>
     /// <returns>A new instance of <see cref="Models.EngineAspiration" /> representing the entity model.</returns>
     public static Models.EngineAspiration ToEntity(this Core.Models.EngineAspiration domainModel)
-        => new()
-        {
-            Id = domainModel.Id,
-            Name = domainModel.Name
-        };
+        => new(domainModel.Id, domainModel.Name);
 }

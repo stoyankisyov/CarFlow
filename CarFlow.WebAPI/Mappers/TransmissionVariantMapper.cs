@@ -24,7 +24,6 @@ public static class TransmissionVariantMapper
     public static TransmissionVariantContract ToContract(this Core.Models.TransmissionVariant domainModel)
         => new()
         {
-            Id = domainModel.Id,
             TransmissionId = domainModel.TransmissionId,
             GearCount = domainModel.GearCount
         };

@@ -1,15 +1,15 @@
 ﻿@model CarManagementViewModel
 
-<label for="Make_Id">Make:</label>
-<select id="Make_Id" asp-for="Car.Make.Id" name="Make.Id" class="form-control" onchange="populateSelectedCarMakeRelatedModels()">
+<label for="Brand_Id">Brand:</label>
+<select id="Brand_Id" asp-for="Car.Brand.Id" name="Brand.Id" class="form-control" onchange="populateSelectedCarBrandRelatedModels()">
     @if (Model.Car is null)
     {
-        <option value="">Select Make</option>
+        <option value="">Select Brand</option>
     }
 
-    @foreach (var make in Model.Options.BaseOptions.Makes)
+    @foreach (var brand in Model.Options.BaseOptions.Brands)
     {
-        <option value="@make.Id">@make.Name</option>
+        <option value="@brand.Id">@brand.Name</option>
     }
 </select>
 
@@ -28,7 +28,7 @@
             <option value="@selected.Id">@selected.Name - @selected.ModelVariant</option>
         }
 
-        foreach (var carModel in Model.Options.BaseOptions.Models.Where(x => x.MakeId == Model.Car.Make.Id && (selected is null || x.Id != selected.Id)))
+        foreach (var carModel in Model.Options.BaseOptions.Models.Where(x => x.BrandId == Model.Car.Brand.Id && (selected is null || x.Id != selected.Id)))
         {
             <option value="@carModel.Id">@carModel.Name - @carModel.ModelVariant</option>
         }
@@ -53,7 +53,7 @@
 <label for="BodyVariant_Id">Body Variant:</label>
 <select id="BodyVariant_Id" asp-for="Car.BodyVariant.Id" name="BodyVariant.Id" class="form-control">
     <option value="">Select Body Variant</option>
-    <option value="1">DoorCount: 2 SeatCount: 3</option>
+    <option value="2">DoorCount: 2 SeatCount: 3</option>
 </select>
 
 <label for="Transmission_Id">Transmission</label>
