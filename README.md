@@ -5,4 +5,4 @@ The development is done in Azure DevOps, and this is a copy as of 16/08/2024.
 In Azure DevOps, we use pull requests, backlogs, and tasks.
 
 This is my backlog:
-![Backlogs](https://github.com/user-attachments/assets/fbba321a-9ed4-433b-a652-e708c855f036)
+![image](https://github.com/user-attachments/assets/34446d6b-15f0-4698-acdc-f2a9dd0bf185)
